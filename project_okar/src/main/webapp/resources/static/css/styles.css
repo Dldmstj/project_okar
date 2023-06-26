@@ -260,7 +260,7 @@ body {
   box-sizing: border-box;
 }
 
-input[type=radio]{
+input[name=radioBtn]{
   position: relative;
   outline: 0;
   display: none;
@@ -782,7 +782,7 @@ progress {
   color: #6c757d;
 }
 .blockquote-footer::before {
-  content: "??”Â?";
+  content: "??ï¿½ï¿½?";
 }
 
 .img-fluid {

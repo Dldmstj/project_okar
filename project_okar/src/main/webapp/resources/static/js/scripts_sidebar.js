@@ -7,6 +7,111 @@
 // Scripts
 // 
 
+function kind_Car(){
+    let click = document.getElementById("kind_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function comapny_Car(){
+    let click = document.getElementById("comapny_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function year_Car(){
+    let click = document.getElementById("year_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function diriving_Car(){
+    let click = document.getElementById("diriving_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function pay_Car(){
+    let click = document.getElementById("pay_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function color_Car(){
+    let click = document.getElementById("color_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function option_Car(){
+    let click = document.getElementById("option_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function loc_Car(){
+    let click = document.getElementById("loc_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function fuel_Car(){
+    let click = document.getElementById("fuel_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function trans_Car(){
+    let click = document.getElementById("fuel_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function crush_Car(){
+    let click = document.getElementById("crush_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function seater_Car(){
+    let click = document.getElementById("seater_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function selltype(){
+    let click = document.getElementById("selltype");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+
 window.addEventListener('DOMContentLoaded', event => {
 
     // Toggle the side navigation

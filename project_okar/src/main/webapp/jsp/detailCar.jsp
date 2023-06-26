@@ -1,7 +1,6 @@
 <%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
-    <!DOCTYPE html>
-    <html lang="en">
-
+<!DOCTYPE html>
+<html lang="en">
     <head>
         <meta charset="utf-8" />
         <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
@@ -15,50 +14,21 @@
         <!-- Core theme CSS (includes Bootstrap)-->
         <link href="../resources/static/css/styles.css" rel="stylesheet" />
     </head>
-
     <body>
+        <!-- <iframe src="header.html" style="width: 100%; height: 100%; overflow: hidden;"></iframe> -->
+        <jsp:include page="header.jsp"/>
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-light bg-light">
             <div class="container px-4 px-lg-5">
-                <a class="navbar-brand" href="SearchCar.html">OKar</a>
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
-                    data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent"
-                    aria-expanded="false" aria-label="Toggle navigation"><span
-                        class="navbar-toggler-icon"></span></button>
-                <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                    <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
-                        <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
-                        <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
-                        <li class="nav-item dropdown">
-                            <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button"
-                                data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
-                            <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
-                                <li><a class="dropdown-item" href="#!">All Products</a></li>
-                                <li>
-                                    <hr class="dropdown-divider" />
-                                </li>
-                                <li><a class="dropdown-item" href="#!">Popular Items</a></li>
-                                <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
-                            </ul>
-                        </li>
-                    </ul>
-                    <form class="d-flex">
-                        <button class="btn btn-outline-dark" type="submit">
-                            <i class="bi-cart-fill me-1"></i>
-                            Cart
-                            <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
-                        </button>
-                    </form>
-                </div>
+                
             </div>
         </nav>
         <!-- Product section-->
         <section class="py-5">
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
-                    <h1 class="display-5 fw-bolder">¬˜∑Æ ¿Ã∏ß</h1>
-                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0"
-                            src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
+                    <h1 class="display-5 fw-bolder">Ï∞®Îüâ Ïù¥Î¶Ñ</h1>
+                    <div class="col-md-6"><img class="card-img-top mb-5 mb-md-0" src="https://dummyimage.com/600x700/dee2e6/6c757d.jpg" alt="..." /></div>
                 </div>
             </div>
         </section>
@@ -66,59 +36,53 @@
             <div class="container px-4 px-lg-5 my-5">
                 <div class="row gx-4 gx-lg-5 align-items-center">
                     <div class="col-md-6">
-                        <h1 class="display-5 fw-bolder">∞°∞›</h1>
+                        <h1 class="display-5 fw-bolder">Í∞ÄÍ≤©</h1>
                         <ul class="carOptionLists">
                             <li class="fs-5 mb-5">
-                                <span>ø¨Ωƒ</span>
+                                <span>Ïó∞Ïãù</span>
                             </li>
                             <li class="fs-5 mb-5">
-                                <span>¡÷«‡∞≈∏Æ</span>
+                                <span>Ï£ºÌñâÍ±∞Î¶¨</span>
                             </li>
                             <li class="fs-5 mb-5">
-                                <span>ªÁ∞Ì ∞«ºˆ</span>
+                                <span>ÏÇ¨Í≥† Í±¥Ïàò</span>
                             </li>
                             <li class="fs-5 mb-5">
-                                <span>ªÁ∞Ì ø©∫Œ</span>
+                                <span>ÏÇ¨Í≥† Ïó¨Î∂Ä</span>
                             </li>
                         </ul>
-                        <p class="lead">¬˜∑Æ øπªÛ ∞°∞›</p>
-                        <input type="text" class="price-inner" value="0" />ø¯
-                        <input type="text" class="price_2-inner" value="0" />∏∏ø¯
-                        <p class="lead">«“∫Œ±‚∞£</p>
+                        <p class="lead">Ï∞®Îüâ ÏòàÏÉÅ Í∞ÄÍ≤©</p>
+                        <input type="text" class="price-inner" value="0"/>Ïõê
+                        <input type="text" class="price_2-inner" value="0"/>ÎßåÏõê
+                        <p class="lead">Ìï†Î∂ÄÍ∏∞Í∞Ñ</p>
                         <div class="monthlyRadio">
-                            <input type="radio" name="radioBtn" id="12∞≥ø˘" value="12∞≥ø˘" /><label for="12∞≥ø˘"
-                                class="radio-inner">12∞≥ø˘</label>
-                            <input type="radio" name="radioBtn" id="24∞≥ø˘" value="24∞≥ø˘" /><label for="24∞≥ø˘"
-                                class="radio-inner">24∞≥ø˘</label>
-                            <input type="radio" name="radioBtn" id="36∞≥ø˘" value="36∞≥ø˘" /><label for="36∞≥ø˘"
-                                class="radio-inner">36∞≥ø˘</label>
-                            <input type="radio" name="radioBtn" id="48∞≥ø˘" value="48∞≥ø˘" /><label for="48∞≥ø˘"
-                                class="radio-inner">48∞≥ø˘</label>
-                            <input type="radio" name="radioBtn" id="60∞≥ø˘" value="60∞≥ø˘" /><label for="60∞≥ø˘"
-                                class="radio-inner">60∞≥ø˘</label>
-                            <input type="radio" name="radioBtn" id="72∞≥ø˘" value="72∞≥ø˘" /><label for="72∞≥ø˘"
-                                class="radio-inner">72∞≥ø˘</label>
+                            <input type="radio" name="radioBtn" id="12Í∞úÏõî" value="12Í∞úÏõî"/><label for="12Í∞úÏõî" class="radio-inner">12Í∞úÏõî</label>
+                            <input type="radio" name="radioBtn" id="24Í∞úÏõî" value="24Í∞úÏõî"/><label for="24Í∞úÏõî" class="radio-inner">24Í∞úÏõî</label>
+                            <input type="radio" name="radioBtn" id="36Í∞úÏõî" value="36Í∞úÏõî"/><label for="36Í∞úÏõî" class="radio-inner">36Í∞úÏõî</label>
+                            <input type="radio" name="radioBtn" id="48Í∞úÏõî" value="48Í∞úÏõî"/><label for="48Í∞úÏõî" class="radio-inner">48Í∞úÏõî</label>
+                            <input type="radio" name="radioBtn" id="60Í∞úÏõî" value="60Í∞úÏõî"/><label for="60Í∞úÏõî" class="radio-inner">60Í∞úÏõî</label>
+                            <input type="radio" name="radioBtn" id="72Í∞úÏõî" value="72Í∞úÏõî"/><label for="72Í∞úÏõî" class="radio-inner">72Í∞úÏõî</label>
                         </div>
-
+                        
                     </div>
                     <div class="col-md-6" id="tot-price">
-                        <h1 class="display-5 fw-bolder">¬˜∑Æ∏Ì</h1>
-
-                        <p class="lead">√— ±∏∏≈ øπªÛ ∫ÒøÎ</p>
+                        <h1 class="display-5 fw-bolder">Ï∞®ÎüâÎ™Ö</h1>
+                        
+                        <p class="lead">Ï¥ù Íµ¨Îß§ ÏòàÏÉÅ ÎπÑÏö©</p>
                         <div class="el-collapse-item__content">
                             <ul class="costDetailLists">
-                                <li class="tot-li"><span>¬˜∑Æ∞°</span><span>0ø¯</span></li>
-                                <li class="tot-li"><span>¿Ã¿¸µÓ∑œ∫Ò</span><span>0ø¯</span></li>
-                                <li class="tot-li"><span>∞¸∏Æ∫ÒøÎ</span><span>0ø¯</span></li>
-                                <li class="tot-li"><span>µÓ∑œΩ≈√ª¥Î«‡ºˆºˆ∑·</span><span>0ø¯</span></li>
-                                <li class="tot-li"><span>OKar Warrantly</span><span>0ø¯</span></li>
-                                <li class="tot-li"><span>πËº€∫Ò</span><span>πËº€ ¡ˆø™ø° µ˚∂Û ¥ﬁ∂Û¡˝¥œ¥Ÿ.</span></li>
+                                <li class="tot-li"><span>Ï∞®ÎüâÍ∞Ä</span><span>0Ïõê</span></li>
+                                <li class="tot-li"><span>Ïù¥Ï†ÑÎì±Î°ùÎπÑ</span><span>0Ïõê</span></li>
+                                <li class="tot-li"><span>Í¥ÄÎ¶¨ÎπÑÏö©</span><span>0Ïõê</span></li>
+                                <li class="tot-li"><span>Îì±Î°ùÏã†Ï≤≠ÎåÄÌñâÏàòÏàòÎ£å</span><span>0Ïõê</span></li>
+                                <li class="tot-li"><span>OKar Warrantly</span><span>0Ïõê</span></li>
+                                <li class="tot-li"><span>Î∞∞ÏÜ°ÎπÑ</span><span>Î∞∞ÏÜ° ÏßÄÏó≠Ïóê Îî∞Îùº Îã¨ÎùºÏßëÎãàÎã§.</span></li>
                             </ul>
                         </div>
                         <div class="d-flex">
                             <button class="btn btn-outline-dark flex-shrink-0" type="button">
                                 <i class="bi-cart-fill me-1"></i>
-                                »®º≠∫ÒΩ∫ πŸ∑Œ±∏∏≈
+                                ÌôàÏÑúÎπÑÏä§ Î∞îÎ°úÍµ¨Îß§
                             </button>
                         </div>
                     </div>
@@ -133,8 +97,7 @@
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">css
                                 <div class="text-center">
@@ -146,19 +109,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View
-                                        options</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">View options</a></div>
                             </div>
                         </div>
                     </div>
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                Sale</div>
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -179,19 +139,16 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
                             </div>
                         </div>
                     </div>
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Sale badge-->
-                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">
-                                Sale</div>
+                            <div class="badge bg-dark text-white position-absolute" style="top: 0.5rem; right: 0.5rem">Sale</div>
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -204,16 +161,14 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
                             </div>
                         </div>
                     </div>
                     <div class="col mb-5">
                         <div class="card h-100">
                             <!-- Product image-->
-                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg"
-                                alt="..." />
+                            <img class="card-img-top" src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
                             <!-- Product details-->
                             <div class="card-body p-4">
                                 <div class="text-center">
@@ -233,8 +188,7 @@
                             </div>
                             <!-- Product actions-->
                             <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to
-                                        cart</a></div>
+                                <div class="text-center"><a class="btn btn-outline-dark mt-auto" href="#">Add to cart</a></div>
                             </div>
                         </div>
                     </div>
@@ -243,14 +197,11 @@
         </section>
         <!-- Footer-->
         <footer class="py-5 bg-dark">
-            <div class="container">
-                <p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p>
-            </div>
+            <div class="container"><p class="m-0 text-center text-white">Copyright &copy; Your Website 2023</p></div>
         </footer>
         <!-- Bootstrap core JS-->
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
         <!-- Core theme JS-->
         <script src="../resources/static/js/scripts.js"></script>
     </body>
-
-    </html>
+</html>

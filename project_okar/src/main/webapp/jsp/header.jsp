@@ -8,7 +8,7 @@
 	<!-- css파일 분리 -->
 	<link href="../resources/static/css/header.css" rel="stylesheet" type="text/css">
 	</head>
-	<body>
+	<body id="headerbody">
 	<div class="kcarHeader">
 		<div class="gnbArea">
 			<div class="topNavi">

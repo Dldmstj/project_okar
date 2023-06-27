@@ -80,7 +80,7 @@ function fuel_Car(){
     }
 }
 function trans_Car(){
-    let click = document.getElementById("fuel_Car");
+    let click = document.getElementById("trans_Car");
     if(click.style.display === "none"){
         click.style.display = "block";
     }else{

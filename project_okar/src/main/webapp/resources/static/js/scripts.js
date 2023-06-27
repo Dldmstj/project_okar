@@ -5,3 +5,14 @@
 */
 // This file is intentionally blank
 // Use this file to add JavaScript to your project
+
+// 선수금 function (예상가격 30%)
+
+// 세금 및 부대비용(이전등록비 + 관리비 + 대행수수료)
+
+// 구매비용 총합 function
+// 차량가 + 이전등록비 + 관리비용(297,000) + 등록신청대행수수료(33,000)
+
+// 할부 function
+// (차량예상가격 - 선수금)에 개월 수 n빵 + 금리7%
+

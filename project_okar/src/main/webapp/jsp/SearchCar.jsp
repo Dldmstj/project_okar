@@ -1,476 +1,538 @@
-<%@ page language="java" contentType="text/html; charset=EUC-KR" pageEncoding="EUC-KR" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+    pageEncoding="UTF-8"%>
     <!DOCTYPE html>
-<html lang="en">
-    <head>
-        <meta charset="utf-8" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
-        <meta name="description" content="" />
-        <meta name="author" content="" />
-        <title>Shop Homepage - Start Bootstrap Template</title>
-        <!-- Favicon-->
-        <link rel="icon" type="image/x-icon" href="../resources/static/assets/favicon.ico" />
-        <!-- Bootstrap icons-->
-        <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-        <!-- Core theme CSS (includes Bootstrap)-->
-        <link href="../resources/static/css/styles.css" rel="stylesheet" />
-        <link href="../resources/static/css/styles_sidebar.css" rel="stylesheet" />
-
-    </head>
-    <body>
-    <jsp:include page="header.jsp"/>
-        
-        <!-- Header-->
-        <header class="bg-dark py-5">
-            <div class="container px-4 px-lg-5 my-5">
-                <div class="text-center text-white">
-                    <h1 class="display-4 fw-bolder">≥ª¬˜ ªÁ±‚</h1>
-                </div>
-            </div>
-        </header>
-        
+    <html lang="en">
+        <head>
+            <meta charset="utf-8" />
+            <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no" />
+            <meta name="description" content="" />
+            <meta name="author" content="" />
+            <title>Shop Homepage - Start Bootstrap Template</title>
+            <!-- Favicon-->
+            <link rel="icon" type="image/x-icon" href="../resources/static/assets/favicon.ico" />
+            <!-- Bootstrap icons-->
+            <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
+            <!-- Core theme CSS (includes Bootstrap)-->
+            <link href="../resources/static/css/styles.css" rel="stylesheet" />
+            <link href="../resources/static/css/styles_sidebar.css" rel="stylesheet" />
+    		<style type="text/css">
+	    		input[type=checkbox]{
+				  position: relative;
+				  outline: 0;
+				  display: none;
+				  flex: 1;
+				}
+				
+				input[type=checkbox]+label{
+				  color: #16171d;
+				  letter-spacing: -.05rem;
+				  border-radius: 0.3rem;
+				  background-color: #fff;
+				  white-space: nowrap;
+				  border: 2px solid #dcdfe6;
+				  color: #606266;
+				  outline: 0;
+				  margin: 0;
+				  position: relative;
+				  cursor: pointer;
+				  transition: all .3s cubic-bezier(.645,.045,.355,1);
+				  padding: 8px;
+				  font-size: 14px;
+				}
+				
+				input[type=checkbox]:checked+label{
+				  color: #16171d;
+				  border-color: #b70f28;
+				  background-color: #fff;
+				  box-shadow: 0 2px 4px 0 rgba(22,23,29,.04)!important;
+				}
+    		</style>
+        </head>
         <body>
-            <div class="d-flex" id="wrapper">
-                <!-- Sidebar-->
-                <div class="border-end bg-white" id="sidebar-wrapper">
-                    <div class="container-fluid">
-                        <input type="button" class="easySchBtn" value="∞£∆Ì∞Àªˆ" />
-                    </div>
-                    <button onclick="kind_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >¬˜¡æ</button>
-                    <div style="display: none;" class="list-group list-group-flush" id="kind_Car">
-                        <input type="checkbox" id="∞Ê¬˜" value="∞Ê¬˜"/><label>∞Ê¬˜</label>
-                        <input type="checkbox" id="º“«¸¬˜" value="º“«¸¬˜"/><label>º“«¸¬˜</label>
-                        <input type="checkbox" id="º“«¸¬˜" value="º“«¸¬˜"/><label>¡ÿ¡ﬂ«¸¬˜</label>
-                        <input type="checkbox" id="¥Î«¸¬˜" value="¥Î«¸¬˜"/><label>¥Î«¸¬˜</label>
-                        <input type="checkbox" id="Ω∫∆˜√˜ƒ´" value="Ω∫∆˜√˜ƒ´"/><label>Ω∫∆˜√˜ƒ´</label>
-                        <input type="checkbox" id="SUV" value="SUV"/><label>SUV</label>
-                        <input type="checkbox" id="RV" value="RV"/><label>RV</label>
-                        <input type="checkbox" id="∞ÊΩ¬«’¬˜" value="∞ÊΩ¬«’¬˜"/><label>∞ÊΩ¬«’¬˜</label>
-                        <input type="checkbox" id="Ω¬«’¬˜" value="Ω¬«’¬˜"/><label>Ω¬«’¬˜</label>
-                        <input type="checkbox" id="»≠π∞¬˜" value="»≠π∞¬˜"/><label>»≠π∞¬˜</label>
-                        <input type="checkbox" id="πˆΩ∫" value="πˆΩ∫"/><label>πˆΩ∫</label>
-                        <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3"
-                            >∞Ê¬˜</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3"
-                            >a</a>
-                        <a class="list-group-item list-group-item-action list-group-item-light p-3"
-                            >a</a> -->
-                    </div>
-                    <button onclick="comapny_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >¡¶¡∂ªÁ</button>
-                    <div style="display: none;" class="list-group list-group-flush" id="comapny_Car">
-                        <input type="checkbox" id="«ˆ¥Î" value="«ˆ¥Î"/><label>«ˆ¥Î</label>
-                        <input type="checkbox" id="¡¶≥◊Ω√Ω∫" value="¡¶≥◊Ω√Ω∫"/><label>¡¶≥◊Ω√Ω∫</label>
-                        <input type="checkbox" id="±‚æ∆" value="±‚æ∆"/><label>±‚æ∆</label>
-                        <input type="checkbox" id="Ω¶∫∏∑π" value="Ω¶∫∏∑π"/><label>Ω¶∫∏∑π</label>
-                        <input type="checkbox" id="∏£≥ÎªÔº∫" value="∏£≥ÎªÔº∫"/><label>∏£≥ÎªÔº∫</label>
-                        <input type="checkbox" id="Ω÷øÎ" value="Ω÷øÎ"/><label>Ω÷øÎ</label>
-                        <input type="checkbox" id="∫•√˜" value="∫•√˜"/><label>∫•√˜</label>
-                        <input type="checkbox" id="BMW" value="BMW"/><label>BMW</label>
-                        <input type="checkbox" id="æ∆øÏµ" value="æ∆øÏµ"/><label>æ∆øÏµ</label>
-                        <input type="checkbox" id="∆¯Ω∫πŸ∞’" value="∆¯Ω∫πŸ∞’"/><label>∆¯Ω∫πŸ∞’</label>
-                        <input type="checkbox" id="πÃ¥œ" value="πÃ¥œ"/><label>πÃ¥œ</label>
-                        <input type="checkbox" id="∫º∫∏" value="∫º∫∏"/><label>∫º∫∏</label>
-                        <input type="checkbox" id="∆˜∏£Ω¶" value="∆˜∏£Ω¶"/><label>∆˜∏£Ω¶</label>
-                        <input type="checkbox" id="∑∫º≠Ω∫" value="∑∫º≠Ω∫"/><label>∑∫º≠Ω∫</label>
-                        <input type="checkbox" id="µµø‰≈∏" value="µµø‰≈∏"/><label>µµø‰≈∏</label>
-                        <input type="checkbox" id="¿Œ««¥œ∆º" value="¿Œ««¥œ∆º"/><label>¿Œ««¥œ∆º</label>
-                        <input type="checkbox" id="»•¥Ÿ" value="»•¥Ÿ"/><label>»•¥Ÿ</label>
-                        <input type="checkbox" id="∆˜µÂ" value="∆˜µÂ"/><label>∆˜µÂ</label>
-                        <input type="checkbox" id="¡ˆ«¡" value="¡ˆ«¡"/><label>¡ˆ«¡</label>
-                        <input type="checkbox" id="ƒ≥µÙ∂Ù" value="ƒ≥µÙ∂Ù"/><label>ƒ≥µÙ∂Ù</label>
-                        <input type="checkbox" id="∏∂ºº∂Û∆º" value="∏∂ºº∂Û∆º"/><label>∏∂ºº∂Û∆º</label>
-                        <input type="checkbox" id="∑£µÂ∑Œπˆ" value="∑£µÂ∑Œπˆ"/><label>∑£µÂ∑Œπˆ</label>
-                        <input type="checkbox" id="«™¡∂" value="«™¡∂"/><label>«™¡∂</label>
-                        <input type="checkbox" id="∆‰∂Û∏Æ" value="∆‰∂Û∏Æ"/><label>∆‰∂Û∏Æ</label>
-                        <input type="checkbox" id="∫•∆≤∏Æ" value="∫•∆≤∏Æ"/><label>∫•∆≤∏Æ</label>
-                    </div>
-                    <button onclick="year_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >ø¨Ωƒ</button>
-                    <!-- jspø°º≠ scriptlet¿∏∑Œ π›∫ππÆ √≥∏Æ -->
-                    <div style="display: none;" class="list-group list-group-flush" id="year_Car">
-                        <select id="year_min">
-                            <option id="2000" value="2000">2000</option>
-                            <option id="2001" value="2001">2001</option>
-                            <option id="2002" value="2002">2002</option>
-                            <option id="2003" value="2003">2003</option>
-                        </select>
-                        <span> ~ </span>
-                        <select id="year_max">
-                            <option id="2000" value="2000">2000</option>
-                            <option id="2001" value="2001">2001</option>
-                            <option id="2002" value="2002">2002</option>
-                            <option id="2003" value="2003">2003</option>
-                        </select>
-                    </div>        
-                    <button onclick="diriving_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >¡÷«‡∞≈∏Æ</button>
-                    <!-- jspø°º≠ scriptlet¿∏∑Œ π›∫ππÆ √≥∏Æ -->
-                    <div style="display: none;" class="list-group list-group-flush" id="diriving_Car">
-                        <select id="driving_min">
-                            <option id="10000" value="10000">10,000km</option>
-                            <option id="20000" value="20000">20,000km</option>
-                            <option id="30000" value="30000">30,000km</option>
-                            <option id="40000" value="40000">40,000km</option>
-                        </select>
-                        <span> ~ </span>
-                        <select id="driving_max">
-                            <option id="10000" value="10000">10,000km</option>
-                            <option id="20000" value="20000">20,000km</option>
-                            <option id="30000" value="30000">30,000km</option>
-                            <option id="40000" value="40000">40,000km</option>
-                        </select>
-                    </div>
-                    <button onclick="pay_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >∞°∞›</button>
-                    <!-- jspø°º≠ scriptlet¿∏∑Œ π›∫ππÆ √≥∏Æ -->
-                    <div style="display: none;" class="list-group list-group-flush" id="pay_Car">
-                        <input type="checkbox" id="100" value="100"/><label>1πÈ</label>
-                        <input type="checkbox" id="200" value="200"/><label>2πÈ</label>
-                        <input type="checkbox" id="300" value="300"/><label>3πÈ</label>
-                        <input type="checkbox" id="400" value="400"/><label>4πÈ</label>
-                        <input type="checkbox" id="500" value="500"/><label>5πÈ</label>
-                        <input type="checkbox" id="600" value="600"/><label>6πÈ</label>
-                        <input type="checkbox" id="700" value="700"/><label>7πÈ</label>
-                        <input type="checkbox" id="800" value="800"/><label>8πÈ</label>
-                        <input type="checkbox" id="900" value="900"/><label>9πÈ</label>
-                        <input type="text" id="max_pay" value="0"/><span>ø¯ ~ </span>
-                        <input type="text" id="min_pay" value="0"/><span>∏∏ø¯</span>
-                    </div>
-                    <button onclick="color_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >ªˆªÛ</button>
-                    <div style="display: none;" class="list-group list-group-flush" id="color_Car">
-                        <input type="checkbox" id="white" value="white"/><label>»Úªˆ</label>
-                        <input type="checkbox" id="pearl" value="pearl"/><label>¡¯¡÷ªˆ</label>
-                        <input type="checkbox" id="black" value="black"/><label>∞À¡§ªˆ</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>¿∫ªˆ</label>
-                    </div>
-                    <button onclick="option_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >ø…º«</button>
-                    <div style="display: none;" class="list-group list-group-flush" id="option_Car">
-                        <input type="checkbox" id="white" value="white"/><label>∏µŒ ∆˜«‘</label>
-                        <input type="checkbox" id="white" value="white"/><label>Ω∫∆ºæÓ∏µ »Ÿ ø≠º±</label>
-                        <input type="checkbox" id="pearl" value="pearl"/><label>º±∑Á«¡</label>
-                        <input type="checkbox" id="black" value="black"/><label>«œ¿Ã∆–Ω∫</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>»ƒ√¯πÊ ∞Ê∫∏Ω√Ω∫≈€</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>ƒ´∏ﬁ∂Û:»ƒπÊ</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>≥◊∫Ò∞‘¿Ãº«</label>
-                    </div>
-                    <button onclick="loc_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >¡ˆø™/¡˜øµ¡°</button>
-                    <div style="display: none;" class="list-group list-group-flush" id="loc_Car">
-                        <input type="checkbox" id="white" value="white"/><label>∏µŒ ∆˜«‘</label>
-                        <input type="checkbox" id="white" value="white"/><label>»®º≠∫ÒΩ∫ ∏ﬁ∞°ºæ≈Õ</label>
-                        <input type="checkbox" id="pearl" value="pearl"/><label>º≠øÔ</label>
-                        <input type="checkbox" id="black" value="black"/><label>∞Ê±‚/¿Œ√µ</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>∞Ê≥≤</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>∞Ê∫œ</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>¿¸≥≤</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>¿¸∫œ</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>√Ê≥≤</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>√Ê∫œ</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>¡¶¡÷</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>∞≠ø¯</label>
-                    </div>
-                    <button onclick="fuel_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >ø¨∑·</button>
-                    <div style="display: none;" class="list-group list-group-flush" id="fuel_Car">
-                        <input type="checkbox" id="white" value="white"/><label>∏µŒ ∆˜«‘</label>
-                        <input type="checkbox" id="white" value="white"/><label>∞°º÷∏∞</label>
-                        <input type="checkbox" id="pearl" value="pearl"/><label>µ¡©</label>
-                        <input type="checkbox" id="black" value="black"/><label>LPG</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>∞°º÷∏∞+LPG</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>∞°º÷∏∞+¿¸±‚</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>µ¡©+¿¸±‚</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>LPG+¿¸±‚</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>¿¸±‚</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>∞°º÷∏∞+CNG</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>LNG</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>CNG</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>ºˆº“¿¸±‚</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>±‚≈∏</label>
-                    </div>
-                    <button onclick="trans_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >∫Øº”±‚</button>
-                    <div style="display: none;" class="list-group list-group-flush" id="trans_Car">
-                        <input type="checkbox" id="white" value="white"/><label>∏µŒ ∆˜«‘</label>
-                        <input type="checkbox" id="white" value="white"/><label>ø¿≈‰</label>
-                        <input type="checkbox" id="pearl" value="pearl"/><label>ºˆµø</label>
-                        <input type="checkbox" id="black" value="black"/><label>ººπÃø¿≈‰</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>CVT</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>±‚≈∏</label>
-                    </div>
-                    <button onclick="crush_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >ªÁ∞Ì¿Øπ´</button>
-                    <div style="display: none;" class="list-group list-group-flush" id="crush_Car">
-                        <input type="checkbox" id="white" value="white"/><label>∏µŒ ∆˜«‘</label>
-                        <input type="checkbox" id="white" value="white"/><label>π´ªÁ∞Ì</label>
-                        <input type="checkbox" id="pearl" value="pearl"/><label>¥‹º¯ºˆ∏Æ</label>
-                        <input type="checkbox" id="pearl" value="pearl"/><label>ªÁ∞Ì</label>
-                    </div>
-                    <button onclick="seater_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >¿ŒΩ¬</button>
-                    <div style="display: none;" class="list-group list-group-flush" id="seater_Car">
-                        <input type="checkbox" id="white" value="white"/><label>∏µŒ ∆˜«‘</label>
-                        <input type="checkbox" id="white" value="white"/><label>4¿ŒΩ¬</label>
-                        <input type="checkbox" id="pearl" value="pearl"/><label>5¿ŒΩ¬</label>
-                        <input type="checkbox" id="black" value="black"/><label>6¿ŒΩ¬</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>7¿ŒΩ¬</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>9¿ŒΩ¬</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>11¿ŒΩ¬</label>
-                        <input type="checkbox" id="silver" value="silver"/><label>15¿ŒΩ¬</label>
-                    </div>
-                    <button onclick="selltype()" class="list-group-item list-group-item-action list-group-item-light p-3"
-                    >∆«∏≈±∏∫–</button>
-                    <div style="display: none;" class="list-group list-group-flush" id="selltype">
-                        <input type="radio" name="selltype" id="¿¸√º" value="¿¸√º"/><label for="¿¸√º">¿¸√º</label>
-                        <input type="radio" name="selltype" id="¿œπ›" value="¿œπ›"/><label for="¿œπ›">¿œπ›</label>
-                        <input type="radio" name="selltype" id="∏ÆΩ∫Ω¬∞Ë" value="∏ÆΩ∫Ω¬∞Ë"/><label for="∏ÆΩ∫Ω¬∞Ë">∏ÆΩ∫Ω¬∞Ë</label>
+            <!-- Navigation-->
+            <nav class="navbar navbar-expand-lg navbar-light bg-light">
+                <div class="container px-4 px-lg-5">
+                    <a class="navbar-brand" href="#!">OKar</a>
+                    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation"><span class="navbar-toggler-icon"></span></button>
+                    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+                        <ul class="navbar-nav me-auto mb-2 mb-lg-0 ms-lg-4">
+                            <li class="nav-item"><a class="nav-link active" aria-current="page" href="#!">Home</a></li>
+                            <li class="nav-item"><a class="nav-link" href="#!">About</a></li>
+                            <li class="nav-item dropdown">
+                                <a class="nav-link dropdown-toggle" id="navbarDropdown" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">Shop</a>
+                                <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                                    <li><a class="dropdown-item" href="#!">All Products</a></li>
+                                    <li><hr class="dropdown-divider" /></li>
+                                    <li><a class="dropdown-item" href="#!">Popular Items</a></li>
+                                    <li><a class="dropdown-item" href="#!">New Arrivals</a></li>
+                                </ul>
+                            </li>
+                        </ul>
+                        <form class="d-flex">
+                            <button class="btn btn-outline-dark" type="submit">
+                                <i class="bi-cart-fill me-1"></i>
+                                Cart
+                                <span class="badge bg-dark text-white ms-1 rounded-pill">0</span>
+                            </button>
+                        </form>
                     </div>
                 </div>
-                <!-- Page content wrapper-->
-                <div id="page-content-wrapper">
-                    <!-- Top navigation-->
-                    <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+            </nav>
+            <!-- Header-->
+            <header class="bg-dark py-5">
+                <div class="container px-4 px-lg-5 my-5">
+                    <div class="text-center text-white">
+                        <h1 class="display-4 fw-bolder">ÎÇ¥Ï∞® ÏÇ¨Í∏∞</h1>
+                    </div>
+                </div>
+            </header>
+            
+            <body>
+                <div class="d-flex" id="wrapper">
+                    <!-- Sidebar-->
+                    <div class="border-end bg-white" id="sidebar-wrapper">
                         <div class="container-fluid">
-                            <form class="searchForm">
-                                <input type="text" class="searchBox" placeholder="ø¯«œ¥¬ ¬˜∑Æ¿ª ∞Àªˆ«œººø‰." />
-                                <input type="button" class="searchBtn" value="∞Àªˆ" />
-                            </form>
+                            <input type="button" class="easySchBtn" value="Í∞ÑÌé∏Í≤ÄÏÉâ" />
                         </div>
-                    </nav>
-                    <!-- Page content-->
-                    <div class="container-fluid">
-                        <!-- Section-->
-                        <section class="py-5">
-                            <div class="container px-4 px-lg-5 mt-5">
-                                <div
-                                    class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-                                    <div class="col mb-5">
-                                        <div class="card h-100" onclick="location.href='detailCar.jsp';">
-                                            <!-- Product image-->
-                                            <img class="card-img-top"
-                                                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                            <!-- Product details-->
-                                            <div class="card-body p-4">
-                                                <div class="text-center">
-                                                    <!-- Product name-->
-                                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                                    <!-- Product price-->
-                                                    $40.00 - $80.00
-                                                </div>
-                                            </div>
-                                            <!-- Product actions-->
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                        href="#">View options</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-5">
-                                        <div class="card h-100">
-                                            <!-- Sale badge-->
-                                            <div class="badge bg-dark text-white position-absolute"
-                                                style="top: 0.5rem; right: 0.5rem">Sale</div>
-                                            <!-- Product image-->
-                                            <img class="card-img-top"
-                                                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                            <!-- Product details-->
-                                            <div class="card-body p-4">
-                                                <div class="text-center">
-                                                    <!-- Product name-->
-                                                    <h5 class="fw-bolder">Special Item</h5>
-                                                    <!-- Product reviews-->
-                                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
+                        <button onclick="kind_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >Ï∞®Ï¢Ö</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="kind_Car">
+                            <input type="checkbox" name="kind_Car" id="Í≤ΩÏ∞®" value="Í≤ΩÏ∞®"/><label>Í≤ΩÏ∞®</label>
+                            <input type="checkbox" name="kind_Car" id="ÏÜåÌòïÏ∞®" value="ÏÜåÌòïÏ∞®"/><label>ÏÜåÌòïÏ∞®</label>
+                            <input type="checkbox" name="kind_Car" id="ÏÜåÌòïÏ∞®" value="ÏÜåÌòïÏ∞®"/><label>Ï§ÄÏ§ëÌòïÏ∞®</label>
+                            <input type="checkbox" name="kind_Car" id="ÎåÄÌòïÏ∞®" value="ÎåÄÌòïÏ∞®"/><label>ÎåÄÌòïÏ∞®</label>
+                            <input type="checkbox" name="kind_Car" id="Ïä§Ìè¨Ï∏†Ïπ¥" value="Ïä§Ìè¨Ï∏†Ïπ¥"/><label>Ïä§Ìè¨Ï∏†Ïπ¥</label>
+                            <input type="checkbox" name="kind_Car" id="SUV" value="SUV"/><label>SUV</label>
+                            <input type="checkbox" name="kind_Car" id="RV" value="RV"/><label>RV</label>
+                            <input type="checkbox" name="kind_Car" id="Í≤ΩÏäπÌï©Ï∞®" value="Í≤ΩÏäπÌï©Ï∞®"/><label>Í≤ΩÏäπÌï©Ï∞®</label>
+                            <input type="checkbox" name="kind_Car" id="ÏäπÌï©Ï∞®" value="ÏäπÌï©Ï∞®"/><label>ÏäπÌï©Ï∞®</label>
+                            <input type="checkbox" name="kind_Car" id="ÌôîÎ¨ºÏ∞®" value="ÌôîÎ¨ºÏ∞®"/><label>ÌôîÎ¨ºÏ∞®</label>
+                            <input type="checkbox" name="kind_Car" id="Î≤ÑÏä§" value="Î≤ÑÏä§"/><label>Î≤ÑÏä§</label>
+                            <!-- <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                                >Í≤ΩÏ∞®</a>
+                            <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                                >a</a>
+                            <a class="list-group-item list-group-item-action list-group-item-light p-3"
+                                >a</a> -->
+                        </div>
+                        <button onclick="comapny_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >Ï†úÏ°∞ÏÇ¨</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="comapny_Car">
+                            <input type="checkbox" id="ÌòÑÎåÄ" value="ÌòÑÎåÄ"/><label>ÌòÑÎåÄ</label>
+                            <input type="checkbox" id="Ï†úÎÑ§ÏãúÏä§" value="Ï†úÎÑ§ÏãúÏä§"/><label>Ï†úÎÑ§ÏãúÏä§</label>
+                            <input type="checkbox" id="Í∏∞ÏïÑ" value="Í∏∞ÏïÑ"/><label>Í∏∞ÏïÑ</label>
+                            <input type="checkbox" id="ÏâêÎ≥¥Î†à" value="ÏâêÎ≥¥Î†à"/><label>ÏâêÎ≥¥Î†à</label>
+                            <input type="checkbox" id="Î•¥ÎÖ∏ÏÇºÏÑ±" value="Î•¥ÎÖ∏ÏÇºÏÑ±"/><label>Î•¥ÎÖ∏ÏÇºÏÑ±</label>
+                            <input type="checkbox" id="ÏåçÏö©" value="ÏåçÏö©"/><label>ÏåçÏö©</label>
+                            <input type="checkbox" id="Î≤§Ï∏†" value="Î≤§Ï∏†"/><label>Î≤§Ï∏†</label>
+                            <input type="checkbox" id="BMW" value="BMW"/><label>BMW</label>
+                            <input type="checkbox" id="ÏïÑÏö∞Îîî" value="ÏïÑÏö∞Îîî"/><label>ÏïÑÏö∞Îîî</label>
+                            <input type="checkbox" id="Ìè≠Ïä§Î∞îÍ≤ê" value="Ìè≠Ïä§Î∞îÍ≤ê"/><label>Ìè≠Ïä§Î∞îÍ≤ê</label>
+                            <input type="checkbox" id="ÎØ∏Îãà" value="ÎØ∏Îãà"/><label>ÎØ∏Îãà</label>
+                            <input type="checkbox" id="Î≥ºÎ≥¥" value="Î≥ºÎ≥¥"/><label>Î≥ºÎ≥¥</label>
+                            <input type="checkbox" id="Ìè¨Î•¥Ïâê" value="Ìè¨Î•¥Ïâê"/><label>Ìè¨Î•¥Ïâê</label>
+                            <input type="checkbox" id="Î†âÏÑúÏä§" value="Î†âÏÑúÏä§"/><label>Î†âÏÑúÏä§</label>
+                            <input type="checkbox" id="ÎèÑÏöîÌÉÄ" value="ÎèÑÏöîÌÉÄ"/><label>ÎèÑÏöîÌÉÄ</label>
+                            <input type="checkbox" id="Ïù∏ÌîºÎãàÌã∞" value="Ïù∏ÌîºÎãàÌã∞"/><label>Ïù∏ÌîºÎãàÌã∞</label>
+                            <input type="checkbox" id="ÌòºÎã§" value="ÌòºÎã§"/><label>ÌòºÎã§</label>
+                            <input type="checkbox" id="Ìè¨Îìú" value="Ìè¨Îìú"/><label>Ìè¨Îìú</label>
+                            <input type="checkbox" id="ÏßÄÌîÑ" value="ÏßÄÌîÑ"/><label>ÏßÄÌîÑ</label>
+                            <input type="checkbox" id="Ï∫êÎîúÎùΩ" value="Ï∫êÎîúÎùΩ"/><label>Ï∫êÎîúÎùΩ</label>
+                            <input type="checkbox" id="ÎßàÏÑ∏ÎùºÌã∞" value="ÎßàÏÑ∏ÎùºÌã∞"/><label>ÎßàÏÑ∏ÎùºÌã∞</label>
+                            <input type="checkbox" id="ÎûúÎìúÎ°úÎ≤Ñ" value="ÎûúÎìúÎ°úÎ≤Ñ"/><label>ÎûúÎìúÎ°úÎ≤Ñ</label>
+                            <input type="checkbox" id="Ìë∏Ï°∞" value="Ìë∏Ï°∞"/><label>Ìë∏Ï°∞</label>
+                            <input type="checkbox" id="ÌéòÎùºÎ¶¨" value="ÌéòÎùºÎ¶¨"/><label>ÌéòÎùºÎ¶¨</label>
+                            <input type="checkbox" id="Î≤§ÌãÄÎ¶¨" value="Î≤§ÌãÄÎ¶¨"/><label>Î≤§ÌãÄÎ¶¨</label>
+                        </div>
+                        <button onclick="year_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >Ïó∞Ïãù</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="year_Car">
+                            <select id="year_min">
+                        <%
+                        for(int i=2000; i<=2023; i++){
+                        %>
+                                <option id="<%=i %>" value="<%=i %>"><%=i %></option>
+                        <%}%>
+                            </select>
+                            <span> ~ </span>
+                            <select id="year_max">
+                        <%
+                        for(int i=2000; i<=2023; i++){
+                        %>
+                                <option id="<%=i %>" value="<%=i %>"><%=i %></option>
+                        <%}%>
+                            </select>
+                        </div>        
+                        <button onclick="diriving_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >Ï£ºÌñâÍ±∞Î¶¨</button>
+                        <!-- jspÏóêÏÑú scriptletÏúºÎ°ú Î∞òÎ≥µÎ¨∏ Ï≤òÎ¶¨ -->
+                        <div style="display: none;" class="list-group list-group-flush" id="diriving_Car">
+                            <select id="driving_min">
+                        <%
+                        for(int i=10000; i<=100000; i+=10000){
+                        %>
+                                <option id="<%=i %>" value="<%=i %>"><%=i %>km</option>
+                        <%}%>
+                            </select>
+                            <span> ~ </span>
+                            <select id="driving_max">
+                                <option id="10000" value="10000">10,000km</option>
+                                <option id="20000" value="20000">20,000km</option>
+                                <option id="30000" value="30000">30,000km</option>
+                                <option id="40000" value="40000">40,000km</option>
+                            </select>
+                        </div>
+                        <button onclick="pay_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >Í∞ÄÍ≤©</button>
+                        <!-- jspÏóêÏÑú scriptletÏúºÎ°ú Î∞òÎ≥µÎ¨∏ Ï≤òÎ¶¨ -->
+                        <div style="display: none;" class="list-group list-group-flush" id="pay_Car">
+                            <input type="checkbox" id="100" value="100"/><label>1Î∞±</label>
+                            <input type="checkbox" id="200" value="200"/><label>2Î∞±</label>
+                            <input type="checkbox" id="300" value="300"/><label>3Î∞±</label>
+                            <input type="checkbox" id="400" value="400"/><label>4Î∞±</label>
+                            <input type="checkbox" id="500" value="500"/><label>5Î∞±</label>
+                            <input type="checkbox" id="600" value="600"/><label>6Î∞±</label>
+                            <input type="checkbox" id="700" value="700"/><label>7Î∞±</label>
+                            <input type="checkbox" id="800" value="800"/><label>8Î∞±</label>
+                            <input type="checkbox" id="900" value="900"/><label>9Î∞±</label>
+                            <input type="text" id="max_pay" value="0"/><span>Ïõê ~ </span>
+                            <input type="text" id="min_pay" value="0"/><span>ÎßåÏõê</span>
+                        </div>
+                        <button onclick="color_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >ÏÉâÏÉÅ</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="color_Car">
+                            <input type="checkbox" id="white" value="white"/><label>Ìù∞ÏÉâ</label>
+                            <input type="checkbox" id="pearl" value="pearl"/><label>ÏßÑÏ£ºÏÉâ</label>
+                            <input type="checkbox" id="black" value="black"/><label>Í≤ÄÏ†ïÏÉâ</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>ÏùÄÏÉâ</label>
+                        </div>
+                        <button onclick="option_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >ÏòµÏÖò</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="option_Car">
+                            <input type="checkbox" id="white" value="white"/><label>Î™®Îëê Ìè¨Ìï®</label>
+                            <input type="checkbox" id="white" value="white"/><label>Ïä§Ìã∞Ïñ¥ÎßÅ Ìú† Ïó¥ÏÑ†</label>
+                            <input type="checkbox" id="pearl" value="pearl"/><label>ÏÑ†Î£®ÌîÑ</label>
+                            <input type="checkbox" id="black" value="black"/><label>ÌïòÏù¥Ìå®Ïä§</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>ÌõÑÏ∏°Î∞© Í≤ΩÎ≥¥ÏãúÏä§ÌÖú</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Ïπ¥Î©îÎùº:ÌõÑÎ∞©</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>ÎÑ§ÎπÑÍ≤åÏù¥ÏÖò</label>
+                        </div>
+                        <button onclick="loc_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >ÏßÄÏó≠/ÏßÅÏòÅÏ†ê</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="loc_Car">
+                            <input type="checkbox" id="white" value="white"/><label>Î™®Îëê Ìè¨Ìï®</label>
+                            <input type="checkbox" id="white" value="white"/><label>ÌôàÏÑúÎπÑÏä§ Î©îÍ∞ÄÏÑºÌÑ∞</label>
+                            <input type="checkbox" id="pearl" value="pearl"/><label>ÏÑúÏö∏</label>
+                            <input type="checkbox" id="black" value="black"/><label>Í≤ΩÍ∏∞/Ïù∏Ï≤ú</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Í≤ΩÎÇ®</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Í≤ΩÎ∂Å</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Ï†ÑÎÇ®</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Ï†ÑÎ∂Å</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Ï∂©ÎÇ®</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Ï∂©Î∂Å</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Ï†úÏ£º</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Í∞ïÏõê</label>
+                        </div>
+                        <button onclick="fuel_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >Ïó∞Î£å</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="fuel_Car">
+                            <input type="checkbox" id="white" value="white"/><label>Î™®Îëê Ìè¨Ìï®</label>
+                            <input type="checkbox" id="white" value="white"/><label>Í∞ÄÏÜîÎ¶∞</label>
+                            <input type="checkbox" id="pearl" value="pearl"/><label>ÎîîÏ†§</label>
+                            <input type="checkbox" id="black" value="black"/><label>LPG</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Í∞ÄÏÜîÎ¶∞+LPG</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Í∞ÄÏÜîÎ¶∞+Ï†ÑÍ∏∞</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>ÎîîÏ†§+Ï†ÑÍ∏∞</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>LPG+Ï†ÑÍ∏∞</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Ï†ÑÍ∏∞</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Í∞ÄÏÜîÎ¶∞+CNG</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>LNG</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>CNG</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>ÏàòÏÜåÏ†ÑÍ∏∞</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Í∏∞ÌÉÄ</label>
+                        </div>
+                        <button onclick="trans_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >Î≥ÄÏÜçÍ∏∞</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="trans_Car">
+                            <input type="checkbox" id="white" value="white"/><label>Î™®Îëê Ìè¨Ìï®</label>
+                            <input type="checkbox" id="white" value="white"/><label>Ïò§ÌÜ†</label>
+                            <input type="checkbox" id="pearl" value="pearl"/><label>ÏàòÎèô</label>
+                            <input type="checkbox" id="black" value="black"/><label>ÏÑ∏ÎØ∏Ïò§ÌÜ†</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>CVT</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>Í∏∞ÌÉÄ</label>
+                        </div>
+                        <button onclick="crush_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >ÏÇ¨Í≥†Ïú†Î¨¥</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="crush_Car">
+                            <input type="checkbox" id="white" value="white"/><label>Î™®Îëê Ìè¨Ìï®</label>
+                            <input type="checkbox" id="white" value="white"/><label>Î¨¥ÏÇ¨Í≥†</label>
+                            <input type="checkbox" id="pearl" value="pearl"/><label>Îã®ÏàúÏàòÎ¶¨</label>
+                            <input type="checkbox" id="pearl" value="pearl"/><label>ÏÇ¨Í≥†</label>
+                        </div>
+                        <button onclick="seater_Car()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >Ïù∏Ïäπ</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="seater_Car">
+                            <input type="checkbox" id="white" value="white"/><label>Î™®Îëê Ìè¨Ìï®</label>
+                            <input type="checkbox" id="white" value="white"/><label>4Ïù∏Ïäπ</label>
+                            <input type="checkbox" id="pearl" value="pearl"/><label>5Ïù∏Ïäπ</label>
+                            <input type="checkbox" id="black" value="black"/><label>6Ïù∏Ïäπ</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>7Ïù∏Ïäπ</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>9Ïù∏Ïäπ</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>11Ïù∏Ïäπ</label>
+                            <input type="checkbox" id="silver" value="silver"/><label>15Ïù∏Ïäπ</label>
+                        </div>
+                        <button onclick="selltype()" class="list-group-item list-group-item-action list-group-item-light p-3"
+                        >ÌåêÎß§Íµ¨Î∂Ñ</button>
+                        <div style="display: none;" class="list-group list-group-flush" id="selltype">
+                            <input type="radio" name="selltype" id="Ï†ÑÏ≤¥" value="Ï†ÑÏ≤¥"/><label for="Ï†ÑÏ≤¥">Ï†ÑÏ≤¥</label>
+                            <input type="radio" name="selltype" id="ÏùºÎ∞ò" value="ÏùºÎ∞ò"/><label for="ÏùºÎ∞ò">ÏùºÎ∞ò</label>
+                            <input type="radio" name="selltype" id="Î¶¨Ïä§ÏäπÍ≥Ñ" value="Î¶¨Ïä§ÏäπÍ≥Ñ"/><label for="Î¶¨Ïä§ÏäπÍ≥Ñ">Î¶¨Ïä§ÏäπÍ≥Ñ</label>
+                        </div>
+                    </div>
+                    <!-- Page content wrapper-->
+                    <div id="page-content-wrapper">
+                        <!-- Top navigation-->
+                        <nav class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
+                            <div class="container-fluid">
+                                <form class="searchForm">
+                                    <input type="text" class="searchBox" placeholder="ÏõêÌïòÎäî Ï∞®ÎüâÏùÑ Í≤ÄÏÉâÌïòÏÑ∏Ïöî." />
+                                    <input type="button" class="searchBtn" value="Í≤ÄÏÉâ" />
+                                </form>
+                            </div>
+                        </nav>
+                        <!-- Page content-->
+                        <div class="container-fluid">
+                            <!-- Section-->
+                            <section class="py-5">
+                                <div class="container px-4 px-lg-5 mt-5">
+                                    <div
+                                        class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+                                        <div class="col mb-5">
+                                            <div class="card h-100" onclick="location.href='detailCar.jsp';">
+                                                <!-- Product image-->
+                                                <img class="card-img-top"
+                                                    src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                                <!-- Product details-->
+                                                <div class="card-body p-4">
+                                                    <div class="text-center">
+                                                        <!-- Product name-->
+                                                        <h5 class="fw-bolder">Fancy Product</h5>
+                                                        <!-- Product price-->
+                                                        $40.00 - $80.00
                                                     </div>
-                                                    <!-- Product price-->
-                                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                                    $18.00
+                                                </div>
+                                                <!-- Product actions-->
+                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                                            href="#">View options</a></div>
                                                 </div>
                                             </div>
-                                            <!-- Product actions-->
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                        href="#">Add to cart</a></div>
-                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col mb-5">
-                                        <div class="card h-100">
-                                            <!-- Sale badge-->
-                                            <div class="badge bg-dark text-white position-absolute"
-                                                style="top: 0.5rem; right: 0.5rem">Sale</div>
-                                            <!-- Product image-->
-                                            <img class="card-img-top"
-                                                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                            <!-- Product details-->
-                                            <div class="card-body p-4">
-                                                <div class="text-center">
-                                                    <!-- Product name-->
-                                                    <h5 class="fw-bolder">Sale Item</h5>
-                                                    <!-- Product price-->
-                                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                                    $25.00
-                                                </div>
-                                            </div>
-                                            <!-- Product actions-->
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                        href="#">Add to cart</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-5">
-                                        <div class="card h-100">
-                                            <!-- Product image-->
-                                            <img class="card-img-top"
-                                                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                            <!-- Product details-->
-                                            <div class="card-body p-4">
-                                                <div class="text-center">
-                                                    <!-- Product name-->
-                                                    <h5 class="fw-bolder">Popular Item</h5>
-                                                    <!-- Product reviews-->
-                                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
+                                        <div class="col mb-5">
+                                            <div class="card h-100">
+                                                <!-- Sale badge-->
+                                                <div class="badge bg-dark text-white position-absolute"
+                                                    style="top: 0.5rem; right: 0.5rem">Sale</div>
+                                                <!-- Product image-->
+                                                <img class="card-img-top"
+                                                    src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                                <!-- Product details-->
+                                                <div class="card-body p-4">
+                                                    <div class="text-center">
+                                                        <!-- Product name-->
+                                                        <h5 class="fw-bolder">Special Item</h5>
+                                                        <!-- Product reviews-->
+                                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                        </div>
+                                                        <!-- Product price-->
+                                                        <span class="text-muted text-decoration-line-through">$20.00</span>
+                                                        $18.00
                                                     </div>
-                                                    <!-- Product price-->
-                                                    $40.00
+                                                </div>
+                                                <!-- Product actions-->
+                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                                            href="#">Add to cart</a></div>
                                                 </div>
                                             </div>
-                                            <!-- Product actions-->
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                        href="#">Add to cart</a></div>
-                                            </div>
                                         </div>
-                                    </div>
-                                    <div class="col mb-5">
-                                        <div class="card h-100">
-                                            <!-- Sale badge-->
-                                            <div class="badge bg-dark text-white position-absolute"
-                                                style="top: 0.5rem; right: 0.5rem">Sale</div>
-                                            <!-- Product image-->
-                                            <img class="card-img-top"
-                                                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                            <!-- Product details-->
-                                            <div class="card-body p-4">
-                                                <div class="text-center">
-                                                    <!-- Product name-->
-                                                    <h5 class="fw-bolder">Sale Item</h5>
-                                                    <!-- Product price-->
-                                                    <span class="text-muted text-decoration-line-through">$50.00</span>
-                                                    $25.00
-                                                </div>
-                                            </div>
-                                            <!-- Product actions-->
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                        href="#">Add to cart</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-5">
-                                        <div class="card h-100">
-                                            <!-- Product image-->
-                                            <img class="card-img-top"
-                                                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                            <!-- Product details-->
-                                            <div class="card-body p-4">
-                                                <div class="text-center">
-                                                    <!-- Product name-->
-                                                    <h5 class="fw-bolder">Fancy Product</h5>
-                                                    <!-- Product price-->
-                                                    $120.00 - $280.00
-                                                </div>
-                                            </div>
-                                            <!-- Product actions-->
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                        href="#">View options</a></div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                    <div class="col mb-5">
-                                        <div class="card h-100">
-                                            <!-- Sale badge-->
-                                            <div class="badge bg-dark text-white position-absolute"
-                                                style="top: 0.5rem; right: 0.5rem">Sale</div>
-                                            <!-- Product image-->
-                                            <img class="card-img-top"
-                                                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                            <!-- Product details-->
-                                            <div class="card-body p-4">
-                                                <div class="text-center">
-                                                    <!-- Product name-->
-                                                    <h5 class="fw-bolder">Special Item</h5>
-                                                    <!-- Product reviews-->
-                                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
+                                        <div class="col mb-5">
+                                            <div class="card h-100">
+                                                <!-- Sale badge-->
+                                                <div class="badge bg-dark text-white position-absolute"
+                                                    style="top: 0.5rem; right: 0.5rem">Sale</div>
+                                                <!-- Product image-->
+                                                <img class="card-img-top"
+                                                    src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                                <!-- Product details-->
+                                                <div class="card-body p-4">
+                                                    <div class="text-center">
+                                                        <!-- Product name-->
+                                                        <h5 class="fw-bolder">Sale Item</h5>
+                                                        <!-- Product price-->
+                                                        <span class="text-muted text-decoration-line-through">$50.00</span>
+                                                        $25.00
                                                     </div>
-                                                    <!-- Product price-->
-                                                    <span class="text-muted text-decoration-line-through">$20.00</span>
-                                                    $18.00
                                                 </div>
-                                            </div>
-                                            <!-- Product actions-->
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                        href="#">Add to cart</a></div>
+                                                <!-- Product actions-->
+                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                                            href="#">Add to cart</a></div>
+                                                </div>
                                             </div>
                                         </div>
-                                    </div>
-                                    <div class="col mb-5">
-                                        <div class="card h-100">
-                                            <!-- Product image-->
-                                            <img class="card-img-top"
-                                                src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
-                                            <!-- Product details-->
-                                            <div class="card-body p-4">
-                                                <div class="text-center">
-                                                    <!-- Product name-->
-                                                    <h5 class="fw-bolder">Popular Item</h5>
-                                                    <!-- Product reviews-->
-                                                    <div class="d-flex justify-content-center small text-warning mb-2">
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
-                                                        <div class="bi-star-fill"></div>
+                                        <div class="col mb-5">
+                                            <div class="card h-100">
+                                                <!-- Product image-->
+                                                <img class="card-img-top"
+                                                    src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                                <!-- Product details-->
+                                                <div class="card-body p-4">
+                                                    <div class="text-center">
+                                                        <!-- Product name-->
+                                                        <h5 class="fw-bolder">Popular Item</h5>
+                                                        <!-- Product reviews-->
+                                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                        </div>
+                                                        <!-- Product price-->
+                                                        $40.00
                                                     </div>
-                                                    <!-- Product price-->
-                                                    $40.00
+                                                </div>
+                                                <!-- Product actions-->
+                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                                            href="#">Add to cart</a></div>
                                                 </div>
                                             </div>
-                                            <!-- Product actions-->
-                                            <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-                                                <div class="text-center"><a class="btn btn-outline-dark mt-auto"
-                                                        href="#">Add to cart</a></div>
+                                        </div>
+                                        <div class="col mb-5">
+                                            <div class="card h-100">
+                                                <!-- Sale badge-->
+                                                <div class="badge bg-dark text-white position-absolute"
+                                                    style="top: 0.5rem; right: 0.5rem">Sale</div>
+                                                <!-- Product image-->
+                                                <img class="card-img-top"
+                                                    src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                                <!-- Product details-->
+                                                <div class="card-body p-4">
+                                                    <div class="text-center">
+                                                        <!-- Product name-->
+                                                        <h5 class="fw-bolder">Sale Item</h5>
+                                                        <!-- Product price-->
+                                                        <span class="text-muted text-decoration-line-through">$50.00</span>
+                                                        $25.00
+                                                    </div>
+                                                </div>
+                                                <!-- Product actions-->
+                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                                            href="#">Add to cart</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col mb-5">
+                                            <div class="card h-100">
+                                                <!-- Product image-->
+                                                <img class="card-img-top"
+                                                    src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                                <!-- Product details-->
+                                                <div class="card-body p-4">
+                                                    <div class="text-center">
+                                                        <!-- Product name-->
+                                                        <h5 class="fw-bolder">Fancy Product</h5>
+                                                        <!-- Product price-->
+                                                        $120.00 - $280.00
+                                                    </div>
+                                                </div>
+                                                <!-- Product actions-->
+                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                                            href="#">View options</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col mb-5">
+                                            <div class="card h-100">
+                                                <!-- Sale badge-->
+                                                <div class="badge bg-dark text-white position-absolute"
+                                                    style="top: 0.5rem; right: 0.5rem">Sale</div>
+                                                <!-- Product image-->
+                                                <img class="card-img-top"
+                                                    src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                                <!-- Product details-->
+                                                <div class="card-body p-4">
+                                                    <div class="text-center">
+                                                        <!-- Product name-->
+                                                        <h5 class="fw-bolder">Special Item</h5>
+                                                        <!-- Product reviews-->
+                                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                        </div>
+                                                        <!-- Product price-->
+                                                        <span class="text-muted text-decoration-line-through">$20.00</span>
+                                                        $18.00
+                                                    </div>
+                                                </div>
+                                                <!-- Product actions-->
+                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                                            href="#">Add to cart</a></div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                        <div class="col mb-5">
+                                            <div class="card h-100">
+                                                <!-- Product image-->
+                                                <img class="card-img-top"
+                                                    src="https://dummyimage.com/450x300/dee2e6/6c757d.jpg" alt="..." />
+                                                <!-- Product details-->
+                                                <div class="card-body p-4">
+                                                    <div class="text-center">
+                                                        <!-- Product name-->
+                                                        <h5 class="fw-bolder">Popular Item</h5>
+                                                        <!-- Product reviews-->
+                                                        <div class="d-flex justify-content-center small text-warning mb-2">
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                            <div class="bi-star-fill"></div>
+                                                        </div>
+                                                        <!-- Product price-->
+                                                        $40.00
+                                                    </div>
+                                                </div>
+                                                <!-- Product actions-->
+                                                <div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
+                                                    <div class="text-center"><a class="btn btn-outline-dark mt-auto"
+                                                            href="#">Add to cart</a></div>
+                                                </div>
                                             </div>
                                         </div>
                                     </div>
                                 </div>
-                            </div>
-                        </section>
+                            </section>
+                        </div>
                     </div>
                 </div>
-            </div>
-            <!-- Bootstrap core JS-->
-            <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
-            <!-- Core theme JS-->
-            <script src="../resources/static/js/scripts_sidebar.js"></script>
-        </body>
-</html>
+                <!-- Bootstrap core JS-->
+                <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+                <!-- Core theme JS-->
+                <script src="../resources/static/js/scripts_sidebar.js"></script>
+            </body>
+    </html>
+    

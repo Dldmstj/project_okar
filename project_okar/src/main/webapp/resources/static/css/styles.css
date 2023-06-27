@@ -284,6 +284,7 @@ input[name=radioBtn]{
   padding: 15px 27px;
   font-size: 14px;
 }
+
 input[type=radio]:checked+label{
   color: #16171d;
   border-color: #b70f28;

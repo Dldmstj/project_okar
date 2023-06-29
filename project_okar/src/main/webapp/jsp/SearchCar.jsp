@@ -349,11 +349,10 @@ input[type=checkbox]:checked+label {
 				
 			%>
 							<div class="col mb-5">
-								<div class="card h-100" onclick="location.href='detailCar.jsp';">
+								<div class="card h-100" onclick="location.href='detailCar.jsp?car_num=<%=ok.getCar_num()%>';">
 									<!-- Product image-->
-									<!-- jsp / 차량 이미지 경로 -->
 									<img class="card-img-top"
-										src="<%=ok.getCar_img() %>"
+										src="<%=ok.getImg_src() %>"
 										alt="..." />
 									<!-- Product details-->
 									<div class="card-body p-4">
@@ -361,14 +360,13 @@ input[type=checkbox]:checked+label {
 											<!-- Product name-->
 											<h5 class="fw-bolder"><%=ok.getManufactor()%> <%=ok.getModel()%> <%=ok.getVolume()%></h5>
 											<!-- Product price-->
-											<%=ok.getPrice()%>만원
+											<%=(int)(ok.getPrice()/10000)%>만원
 										</div>
 									</div>
 									<!-- Product actions-->
 									<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 										<div class="text-center">
-											<!-- jsp : 경로/ 해당 차량 상세페이지로 이동 -->
-											<a class="btn btn-outline-dark mt-auto" href="detailCar.jsp">View options</a>
+											<a class="btn btn-outline-dark mt-auto" href="detailCar.jsp?car_num=<%=ok.getCar_num()%>">View options</a>
 										</div>
 									</div>
 								</div>

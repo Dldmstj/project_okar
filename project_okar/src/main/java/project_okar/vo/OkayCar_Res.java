@@ -26,7 +26,7 @@ public class OkayCar_Res {
 	private int drive_dist;	// 주행거리
 	private Date regist_time;	// 차량등록일자
 	private String sell_or_not;	// 판매여부
-	private String car_img;		// 차량 이미지
+	private String img_src;		// 차량 이미지 경로
 	
 	// 고정값
 	public static final int manage_cost = 297000; // 차량 관리비 (고정)
@@ -36,7 +36,7 @@ public class OkayCar_Res {
 	public OkayCar_Res() {}
 	
 	public OkayCar_Res(String car_num, String manufactor, String model, String volume, int price, int accident_cnt,
-			int drive_dist, Date regist_time, String sell_or_not, String car_img) {
+			int drive_dist, Date regist_time, String sell_or_not, String img_src) {
 		this.car_num = car_num;
 		this.manufactor = manufactor;
 		this.model = model;
@@ -46,7 +46,7 @@ public class OkayCar_Res {
 		this.drive_dist = drive_dist;
 		this.regist_time = regist_time;
 		this.sell_or_not = sell_or_not;
-		this.car_img = car_img;
+		this.img_src = img_src;
 	}
 	
 	public OkayCar_Res(String car_num, String manufactor, String model, String volume, int price, int accident_cnt,
@@ -117,10 +117,11 @@ public class OkayCar_Res {
 	public void setSell_or_not(String sell_or_not) {
 		this.sell_or_not = sell_or_not;
 	}
-	public String getCar_img() {
-		return car_img;
+	public String getImg_src() {
+		return img_src;
 	}
-	public void setCar_img(String car_img) {
-		this.car_img = car_img;
+	public void setImg_src(String img_src) {
+		this.img_src = img_src;
 	}
+	
 }

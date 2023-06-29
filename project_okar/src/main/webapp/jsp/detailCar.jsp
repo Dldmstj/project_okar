@@ -1,3 +1,4 @@
+<%@page import="project_okar.dao.DAO"%>
 <%@page import="project_okar.vo.OkayCar_Res"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
@@ -23,24 +24,22 @@
 </head>
 <%
 DecimalFormat decFormat = new DecimalFormat("###,###");	// 쉼표 찍는 내장 객체
-String carCostS = request.getParameter("carCost");	// 차량가격
-if(carCostS==null) carCostS="";
-int carCost = 0;
-if(carCostS!=null) carCost = Integer.parseInt(carCostS);
 
-// dao (차량 정보 불러오기)
+String car_num = request.getParameter("car_num");
+DAO dao = new DAO();
+OkayCar_Res ok = dao.getCarInfo(car_num);
 
-// vo
-OkayCar_Res ok = new OkayCar_Res();
+// 차량 가격
+int carCost = ok.getPrice();
 
 // 차량 선수금
-int advance = (int)(carCost * 0.3);
+int advance = (int)(ok.getPrice() * 0.3);
 
 // 이전등록비
 // 취득세(차량금액*0.07) + 공채매입비 + 인지대(3000원) + 증지대(1000원)
 // 대략적으로 취득세 + 인지대 + 증지대 정도 계산하는 메서드
 int transfer = 0;
-int tot_cost = 0;			// 지불할 총 금액 (차량가격 + 관리비 + 수수료 + 이전등록비)
+int tot_cost = carCost+transfer+ok.manage_cost+ok.agency_fee;			// 지불할 총 금액 (차량가격 + 관리비 + 수수료 + 이전등록비)
 %>
 <body>
 	<iframe src="header.jsp"
@@ -50,10 +49,9 @@ int tot_cost = 0;			// 지불할 총 금액 (차량가격 + 관리비 + 수수�
 	<section class="py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="row gx-4 gx-lg-5 align-items-center">
-			<%-- 제조사 + 차량이름 + 배기량 조합으로 차량 제목 --%>
-				<h1 class="display-5 fw-bolder">기아 더 뉴 K5 LPI 디럭스</h1>
+				<h1 class="display-5 fw-bolder"><%=ok.getManufactor()%> <%=ok.getModel()%> <%=ok.getVolume()%></h1>
 				<div class="col-md-6">
-					<img class="card-img-top mb-5 mb-md-0" src="../car_img/kia_k5.png"
+					<img class="card-img-top mb-5 mb-md-0" src="<%=ok.getImg_src()%>"
 						alt="..." />
 				</div>
 			</div>
@@ -63,11 +61,11 @@ int tot_cost = 0;			// 지불할 총 금액 (차량가격 + 관리비 + 수수�
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="row gx-4 gx-lg-5 align-items-center">
 				<div class="col-md-6">
-					<h1 class="display-5 fw-bolder"><%=decFormat.format(carCost)%>원</h1>
+					<h1 class="display-5 fw-bolder"><%=(int)(ok.getPrice()/10000)%>만원</h1>
 					<ul class="carOptionLists">
 						<li class="fs-5 mb-5"><span>13년 7월식(14년형)</span></li>
-						<li class="fs-5 mb-5"><span>93,554km</span></li>
-						<li class="fs-5 mb-5"><span>2건</span></li>
+						<li class="fs-5 mb-5"><span><%=decFormat.format(ok.getDrive_dist())%>km</span></li>
+						<li class="fs-5 mb-5"><span><%=decFormat.format(ok.getAccident_cnt())%>건</span></li>
 						<li class="fs-5 mb-5"><span>단순수리</span></li>
 					</ul>
 					<p class="lead">차량 예상 가격</p>
@@ -92,18 +90,17 @@ int tot_cost = 0;			// 지불할 총 금액 (차량가격 + 관리비 + 수수�
 					<%-- 월 할부금 출력될 공간 --%>
 				</div>
 				<div class="col-md-6" id="tot-price">
-					<%-- 제조사 + 차량이름 + 배기량 조합으로 차량 제목 --%>
-					<h1 class="display-5 fw-bolder" style="font-size: 30pt;">기아 더 뉴 K5 LPI 디럭스</h1>
+					<h1 class="display-5 fw-bolder" style="font-size: 30pt;"><%=ok.getManufactor()%> <%=ok.getModel()%> <%=ok.getVolume()%></h1>
  
 					<p class="lead">총 구매 예상 비용</p>
 					<div class="el-collapse-item__content">
 						<ul class="costDetailLists">
-							<li class="tot-li"><span>차량가</span><span><%=decFormat.format(carCost) %>원</span></li>
+							<li class="tot-li"><span>차량가</span><span><%=decFormat.format(carCost)%>원</span></li>
 							<li class="tot-li"><span>이전등록비</span><span><%=transfer %>원</span></li>
 							<li class="tot-li"><span>관리비용</span><span><%=decFormat.format(ok.manage_cost) %>원</span></li>
 							<li class="tot-li"><span>등록신청대행수수료</span><span><%=decFormat.format(ok.agency_fee) %>원</span></li>
 							<li class="tot-li"><span>배송비</span><span>배송 지역에 따라 달라집니다.</span></li>
-							<li class="tot-li"><span>합계</span><span style="color: red;"><%=tot_cost %>원</span></li>
+							<li class="tot-li"><span>합계</span><span style="color: red;"><%=decFormat.format(tot_cost) %>원</span></li>
 						</ul>
 					</div>
 					<div class="d-flex">

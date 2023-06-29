@@ -15,8 +15,16 @@ function kind_Car(){
         click.style.display = "none";
     }
 }
-function comapny_Car(){
-    let click = document.getElementById("comapny_Car");
+function kind_Car2(){
+    let click = document.getElementById("kind_Car2");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
+function company_Car(){
+    let click = document.getElementById("company_Car");
     if(click.style.display === "none"){
         click.style.display = "block";
     }else{
@@ -47,8 +55,8 @@ function pay_Car(){
         click.style.display = "none";
     }
 }
-function color_Car(){
-    let click = document.getElementById("color_Car");
+function pay_Car2(){
+    let click = document.getElementById("pay_Car2");
     if(click.style.display === "none"){
         click.style.display = "block";
     }else{
@@ -63,14 +71,6 @@ function option_Car(){
         click.style.display = "none";
     }
 }
-function loc_Car(){
-    let click = document.getElementById("loc_Car");
-    if(click.style.display === "none"){
-        click.style.display = "block";
-    }else{
-        click.style.display = "none";
-    }
-}
 function fuel_Car(){
     let click = document.getElementById("fuel_Car");
     if(click.style.display === "none"){
@@ -79,24 +79,8 @@ function fuel_Car(){
         click.style.display = "none";
     }
 }
-function trans_Car(){
-    let click = document.getElementById("trans_Car");
-    if(click.style.display === "none"){
-        click.style.display = "block";
-    }else{
-        click.style.display = "none";
-    }
-}
 function crush_Car(){
     let click = document.getElementById("crush_Car");
-    if(click.style.display === "none"){
-        click.style.display = "block";
-    }else{
-        click.style.display = "none";
-    }
-}
-function seater_Car(){
-    let click = document.getElementById("seater_Car");
     if(click.style.display === "none"){
         click.style.display = "block";
     }else{

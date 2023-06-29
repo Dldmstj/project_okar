@@ -1,3 +1,6 @@
+<%@page import="java.util.List"%>
+<%@page import="project_okar.vo.OkayCar_Res"%>
+<%@page import="project_okar.dao.DAO"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
 <!DOCTYPE html>
@@ -338,20 +341,27 @@ input[type=checkbox]:checked+label {
 				<section class="py-5">
 					<div class="container px-4 px-lg-5 mt-5">
 						<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+			<%
+			DAO dao = new DAO();
+			
+			List<OkayCar_Res> clist = dao.getCarList();
+			for(OkayCar_Res ok: clist){
+				
+			%>
 							<div class="col mb-5">
 								<div class="card h-100" onclick="location.href='detailCar.jsp';">
 									<!-- Product image-->
 									<!-- jsp / 차량 이미지 경로 -->
 									<img class="card-img-top"
-										src="../car_img/kia_k5.png"
+										src="<%=ok.getCar_img() %>"
 										alt="..." />
 									<!-- Product details-->
 									<div class="card-body p-4">
 										<div class="text-center">
 											<!-- Product name-->
-											<h5 class="fw-bolder">기아 더 뉴 K5 LPI 디럭스</h5>
+											<h5 class="fw-bolder"><%=ok.getManufactor()%> <%=ok.getModel()%> <%=ok.getVolume()%></h5>
 											<!-- Product price-->
-											650만원
+											<%=ok.getPrice()%>만원
 										</div>
 									</div>
 									<!-- Product actions-->
@@ -363,6 +373,7 @@ input[type=checkbox]:checked+label {
 									</div>
 								</div>
 							</div>
+			<%}%>
 							<div class="col mb-5">
 								<div class="card h-100">
 									<!-- Sale badge-->

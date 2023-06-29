@@ -1,3 +1,4 @@
+<%@page import="project_okar.vo.OkayCar_Res"%>
 <%@page import="java.text.DecimalFormat"%>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
 	pageEncoding="UTF-8"%>
@@ -28,8 +29,9 @@ int carCost = 0;
 if(carCostS!=null) carCost = Integer.parseInt(carCostS);
 
 // dao (차량 정보 불러오기)
-int manage_cost = 297000; // 차량 관리비 (고정)
-int agency_fee = 33000; // 대행 수수료 (고정)
+
+// vo
+OkayCar_Res ok = new OkayCar_Res();
 
 // 차량 선수금
 int advance = (int)(carCost * 0.3);
@@ -71,7 +73,7 @@ int tot_cost = 0;			// 지불할 총 금액 (차량가격 + 관리비 + 수수�
 					<p class="lead">차량 예상 가격</p>
 					<input type="text" class="price-inner" value="<%=decFormat.format(carCost) %>" />원 
 					<p class="lead">선수금</p>
-					<input type="text" class="price_2-inner" value="<%=advance/10000 %>" />만원
+					<input type="text" class="price_2-inner" value="<%=advance/10000 %>"/>만원
 					<p class="lead">할부기간</p>
 					<div class="monthlyRadio">
 						<input type="radio" name="radioBtn" id="12개월" value="12개월" /><label
@@ -98,8 +100,8 @@ int tot_cost = 0;			// 지불할 총 금액 (차량가격 + 관리비 + 수수�
 						<ul class="costDetailLists">
 							<li class="tot-li"><span>차량가</span><span><%=decFormat.format(carCost) %>원</span></li>
 							<li class="tot-li"><span>이전등록비</span><span><%=transfer %>원</span></li>
-							<li class="tot-li"><span>관리비용</span><span><%=decFormat.format(manage_cost) %>원</span></li>
-							<li class="tot-li"><span>등록신청대행수수료</span><span><%=decFormat.format(agency_fee) %>원</span></li>
+							<li class="tot-li"><span>관리비용</span><span><%=decFormat.format(ok.manage_cost) %>원</span></li>
+							<li class="tot-li"><span>등록신청대행수수료</span><span><%=decFormat.format(ok.agency_fee) %>원</span></li>
 							<li class="tot-li"><span>배송비</span><span>배송 지역에 따라 달라집니다.</span></li>
 							<li class="tot-li"><span>합계</span><span style="color: red;"><%=tot_cost %>원</span></li>
 						</ul>

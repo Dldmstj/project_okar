@@ -1,3 +1,4 @@
+<%@page import="java.util.List"%>
 <%@page import="project_okar.dao.DAO"%>
 <%@page import="project_okar.vo.OkayCar_Res"%>
 <%@page import="java.text.DecimalFormat"%>
@@ -23,33 +24,35 @@
 <link href="../resources/static/css/styles.css" rel="stylesheet" />
 </head>
 <%
-DecimalFormat decFormat = new DecimalFormat("###,###");	// 쉼표 찍는 내장 객체
+DecimalFormat decFormat = new DecimalFormat("###,###"); // 쉼표 찍는 내장 객체
 
 String car_num = request.getParameter("car_num");
 DAO dao = new DAO();
 OkayCar_Res ok = dao.getCarInfo(car_num);
 
 // 차량 가격
-int carCost = ok.getPrice();
+int carCost = ok.getPrice() * 10000;
 
 // 차량 선수금
-int advance = (int)(ok.getPrice() * 0.3);
+int advance = (int) (carCost * 0.3);
 
 // 이전등록비
 // 취득세(차량금액*0.07) + 공채매입비 + 인지대(3000원) + 증지대(1000원)
 // 대략적으로 취득세 + 인지대 + 증지대 정도 계산하는 메서드
 int transfer = 0;
-int tot_cost = carCost+transfer+ok.manage_cost+ok.agency_fee;			// 지불할 총 금액 (차량가격 + 관리비 + 수수료 + 이전등록비)
+int tot_cost = carCost + transfer + ok.manage_cost + ok.agency_fee; // 지불할 총 금액 (차량가격 + 관리비 + 수수료 + 이전등록비)
 %>
 <body>
 	<iframe src="header.jsp"
 		style="width: 100%; height: 100%; overflow: hidden;" scrolling="no"></iframe>
-	
+
 	<!-- Product section-->
 	<section class="py-5">
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="row gx-4 gx-lg-5 align-items-center">
-				<h1 class="display-5 fw-bolder"><%=ok.getManufactor()%> <%=ok.getModel()%> <%=ok.getVolume()%></h1>
+				<h1 class="display-5 fw-bolder"><%=ok.getManufactor()%>
+					<%=ok.getModel()%>
+					<%=ok.getVolume()%></h1>
 				<div class="col-md-6">
 					<img class="card-img-top mb-5 mb-md-0" src="<%=ok.getImg_src()%>"
 						alt="..." />
@@ -61,7 +64,8 @@ int tot_cost = carCost+transfer+ok.manage_cost+ok.agency_fee;			// 지불할 총
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="row gx-4 gx-lg-5 align-items-center">
 				<div class="col-md-6">
-					<h1 class="display-5 fw-bolder"><%=(int)(ok.getPrice()/10000)%>만원</h1>
+					<h1 class="display-5 fw-bolder"><%=(int) (ok.getPrice())%>만원
+					</h1>
 					<ul class="carOptionLists">
 						<li class="fs-5 mb-5"><span>13년 7월식(14년형)</span></li>
 						<li class="fs-5 mb-5"><span><%=decFormat.format(ok.getDrive_dist())%>km</span></li>
@@ -69,9 +73,11 @@ int tot_cost = carCost+transfer+ok.manage_cost+ok.agency_fee;			// 지불할 총
 						<li class="fs-5 mb-5"><span>단순수리</span></li>
 					</ul>
 					<p class="lead">차량 예상 가격</p>
-					<input type="text" class="price-inner" value="<%=decFormat.format(carCost) %>" />원 
+					<input type="text" class="price-inner"
+						value="<%=decFormat.format(carCost)%>" />원
 					<p class="lead">선수금</p>
-					<input type="text" class="price_2-inner" value="<%=advance/10000 %>"/>만원
+					<input type="text" class="price_2-inner"
+						value="<%=advance / 10000%>" />만원
 					<p class="lead">할부기간</p>
 					<div class="monthlyRadio">
 						<input type="radio" name="radioBtn" id="12개월" value="12개월" /><label
@@ -90,17 +96,20 @@ int tot_cost = carCost+transfer+ok.manage_cost+ok.agency_fee;			// 지불할 총
 					<%-- 월 할부금 출력될 공간 --%>
 				</div>
 				<div class="col-md-6" id="tot-price">
-					<h1 class="display-5 fw-bolder" style="font-size: 30pt;"><%=ok.getManufactor()%> <%=ok.getModel()%> <%=ok.getVolume()%></h1>
- 
+					<h1 class="display-5 fw-bolder" style="font-size: 30pt;"><%=ok.getManufactor()%>
+						<%=ok.getModel()%>
+						<%=ok.getVolume()%></h1>
+
 					<p class="lead">총 구매 예상 비용</p>
 					<div class="el-collapse-item__content">
 						<ul class="costDetailLists">
 							<li class="tot-li"><span>차량가</span><span><%=decFormat.format(carCost)%>원</span></li>
-							<li class="tot-li"><span>이전등록비</span><span><%=transfer %>원</span></li>
-							<li class="tot-li"><span>관리비용</span><span><%=decFormat.format(ok.manage_cost) %>원</span></li>
-							<li class="tot-li"><span>등록신청대행수수료</span><span><%=decFormat.format(ok.agency_fee) %>원</span></li>
-							<li class="tot-li"><span>배송비</span><span>배송 지역에 따라 달라집니다.</span></li>
-							<li class="tot-li"><span>합계</span><span style="color: red;"><%=decFormat.format(tot_cost) %>원</span></li>
+							<li class="tot-li"><span>이전등록비</span><span><%=transfer%>원</span></li>
+							<li class="tot-li"><span>관리비용</span><span><%=decFormat.format(ok.manage_cost)%>원</span></li>
+							<li class="tot-li"><span>등록신청대행수수료</span><span><%=decFormat.format(ok.agency_fee)%>원</span></li>
+							<li class="tot-li"><span>배송비</span><span>배송 지역에 따라
+									달라집니다.</span></li>
+							<li class="tot-li"><span>합계</span><span style="color: red;"><%=decFormat.format(tot_cost)%>원</span></li>
 						</ul>
 					</div>
 					<div class="d-flex">
@@ -112,105 +121,48 @@ int tot_cost = carCost+transfer+ok.manage_cost+ok.agency_fee;			// 지불할 총
 			</div>
 		</div>
 	</div>
-	<!-- Related items section-->
+	<!-- 다른 상품 추천 (최대 4가지) -->
 	<section class="py-5 bg-light">
 		<div class="container px-4 px-lg-5 mt-5">
 			<h2 class="fw-bolder mb-4">Related products</h2>
 			<div
 				class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+				<%
+				List<OkayCar_Res> clist = dao.getCarList();
+				int index = 0;
+				System.out.print(clist.size());
+				if(clist.size() < 4) {
+					index = clist.size()-1;	// 판매중인 차량이 4개 미만일 경우
+				}
+				for (int i=0; i<=index; i++) {
+				%>
 				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Sale badge-->
-						<div class="badge bg-dark text-white position-absolute"
-							style="top: 0.5rem; right: 0.5rem">특옵션</div>
+					<div class="card h-100"
+						onclick="location.href='detailCar.jsp?car_num=<%=clist.get(i).getCar_num()%>';">
 						<!-- Product image-->
-						<img class="card-img-top" src="../car_img/kia_k7.png" alt="..." />
+						<img class="card-img-top" src="<%=clist.get(i).getImg_src()%>" alt="..." />
 						<!-- Product details-->
 						<div class="card-body p-4">
 							<div class="text-center">
 								<!-- Product name-->
-								<h5 class="fw-bolder">기아 올 뉴 K7 2.4 GDI 리미티드</h5>
+								<h5 class="fw-bolder"><%=clist.get(i).getManufactor()%>
+									<%=clist.get(i).getModel()%>
+									<%=clist.get(i).getVolume()%></h5>
 								<!-- Product price-->
-								1,650만원
+								<%=clist.get(i).getPrice()%>만원
 							</div>
 						</div>
 						<!-- Product actions-->
 						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
 							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">View
+								<a class="btn btn-outline-dark mt-auto"
+									href="detailCar.jsp?car_num=<%=clist.get(i).getCar_num()%>">View
 									options</a>
 							</div>
 						</div>
 					</div>
 				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="../car_img/hyundai_nexo.png"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">현대 넥쏘 프리미엄</h5>
-								<!-- Product price-->
-								2,790만원
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">View
-									options</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="../car_img/hyundai_sonata.png"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">현대 LF 쏘나타 하이브리드 2.0 HEV 모던</h5>
-								1,310만원
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">View
-									options</a>
-							</div>
-						</div>
-					</div>
-				</div>
-				<div class="col mb-5">
-					<div class="card h-100">
-						<!-- Product image-->
-						<img class="card-img-top" src="../car_img/hyundai_granduar.png"
-							alt="..." />
-						<!-- Product details-->
-						<div class="card-body p-4">
-							<div class="text-center">
-								<!-- Product name-->
-								<h5 class="fw-bolder">현대 그랜저 IG 3.3 셀러브리티</h5>
-								<!-- Product price-->
-								2,450만원
-							</div>
-						</div>
-						<!-- Product actions-->
-						<div class="card-footer p-4 pt-0 border-top-0 bg-transparent">
-							<div class="text-center">
-								<a class="btn btn-outline-dark mt-auto" href="#">View
-									options</a>
-							</div>
-						</div>
-					</div>
-				</div>
+				<%}%>
 			</div>
 		</div>
 	</section>

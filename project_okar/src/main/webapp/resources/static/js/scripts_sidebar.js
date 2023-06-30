@@ -31,6 +31,14 @@ function company_Car(){
         click.style.display = "none";
     }
 }
+function model_Car(){
+    let click = document.getElementById("model_Car");
+    if(click.style.display === "none"){
+        click.style.display = "block";
+    }else{
+        click.style.display = "none";
+    }
+}
 function year_Car(){
     let click = document.getElementById("year_Car");
     if(click.style.display === "none"){

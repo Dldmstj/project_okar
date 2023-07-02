@@ -75,23 +75,27 @@ int tot_cost = carCost + transfer + ok.manage_cost + ok.agency_fee; // 지불할
 					<p class="lead">차량 예상 가격</p>
 					<input type="text" class="price-inner"
 						value="<%=decFormat.format(carCost)%>" />원
+					<input type="hidden" value="<%=carCost %>" id="carCost" />
 					<p class="lead">선수금</p>
 					<input type="text" class="price_2-inner"
 						value="<%=advance / 10000%>" />만원
 					<p class="lead">할부기간</p>
 					<div class="monthlyRadio">
-						<input type="radio" name="radioBtn" id="12개월" value="12개월" /><label
-							for="12개월" class="radio-inner">12개월</label> <input type="radio"
-							name="radioBtn" id="24개월" value="24개월" /><label for="24개월"
+						<input type="radio" name="radioBtn" id="12개월" value="12" /><label
+							for="12개월" class="radio-inner" onclick="monthly()">12개월</label> <input type="radio"
+							name="radioBtn" id="24개월" value="24" /><label for="24개월"
 							class="radio-inner">24개월</label> <input type="radio"
-							name="radioBtn" id="36개월" value="36개월" /><label for="36개월"
+							name="radioBtn" id="36개월" value="36" /><label for="36개월"
 							class="radio-inner">36개월</label> <input type="radio"
-							name="radioBtn" id="48개월" value="48개월" /><label for="48개월"
+							name="radioBtn" id="48개월" value="48" /><label for="48개월"
 							class="radio-inner">48개월</label> <input type="radio"
-							name="radioBtn" id="60개월" value="60개월" /><label for="60개월"
+							name="radioBtn" id="60개월" value="60" /><label for="60개월"
 							class="radio-inner">60개월</label> <input type="radio"
-							name="radioBtn" id="72개월" value="72개월" /><label for="72개월"
+							name="radioBtn" id="72개월" value="72" /><label for="72개월"
 							class="radio-inner">72개월</label>
+					</div>
+					<div>
+						<h2 id="monthlyCost"></h2>
 					</div>
 					<%-- 월 할부금 출력될 공간 --%>
 				</div>
@@ -130,7 +134,6 @@ int tot_cost = carCost + transfer + ok.manage_cost + ok.agency_fee; // 지불할
 				<%
 				List<OkayCar_Res> clist = dao.getCarList();
 				int index = 0;
-				System.out.print(clist.size());
 				if(clist.size() < 4) {
 					index = clist.size()-1;	// 판매중인 차량이 4개 미만일 경우
 				}

@@ -1,1 +1,1 @@
-{"resources":{"database/임시DB.sql":{"default-datasource":"oracle_thin-1881cf9cbcb-56c6786ed2a8b08f"}}}
+{"resources":{"database/CarOptionInfo.sql":{"default-datasource":"oracle_thin-189078aa790-25c8f24f3b8fd0ed","default-schema":"SCOTT"},"database/car.sql":{"default-datasource":"oracle_thin-189078aa790-25c8f24f3b8fd0ed","default-schema":"SCOTT"},"database/임시DB.sql":{"default-schema":"SCOTT","default-datasource":"oracle_thin-1881cf9cbcb-56c6786ed2a8b08f"}}}

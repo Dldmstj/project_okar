@@ -61,7 +61,7 @@ input[type=checkbox]:checked+label {
 <script type="text/javascript">
 
 	function schCar(){
-		var coms = document.getElementsByName("company");
+		var coms = document.getElementsByName("manu");
 		var comArr = [];
  		for(var i=0; i<coms.length; i++){
  			if(coms[i].checked){
@@ -84,17 +84,35 @@ input[type=checkbox]:checked+label {
  		}
  		var price = document.getElementById("price");
  		var acc = document.getElementById("acc");
- 		var dist = document.getElementById("dist");
-		var xhr = new XMLHttpRequest()
-		var page ="?company="+comArr+"&model="+modArr+"&volume="+volArr+"&price="+price+"&acc="+acc+"&dist="+dist;
-		console.log(page);
-		xhr.open("post","back/search.jsp",true)
+ 		var dist = document.getElementById("dist").value;
+		var xhr = new XMLHttpRequest();
+		var page ="manu="+comArr+"&model="+modArr+"&volume="+volArr+"&price="+price+"&acc="+acc+"&dist="+dist;
+		console.log("manu="+comArr+"&model="+modArr+"&volume="+volArr+"&price="+price+"&acc="+acc+"&dist="+dist);
+		xhr.open("post","back/search.jsp",true);
 		xhr.setRequestHeader("Content-Type",
-				"application/x-www-form-urlencoded")
-		xhr.send(page);
+				"application/x-www-form-urlencoded; charset=euc-kr;")
+		xhr.send("manu="+comArr+"&model="+modArr+"&volume="+volArr+"&price="+price+"&acc="+acc+"&dist="+dist);
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4&&xhr.status==200){
-				
+				var searchList= document.querySelector("#searchList");
+				searchList.innerHTML = xhr.responseText;
+			}
+		}
+	}
+	
+	function schKeyword() {
+		var keyword = document.querySelector("#keyword").value;
+		var xhr = new XMLHttpRequest();
+		var page ="keyword="+keyword;
+		console.log("keyword="+keyword);
+		xhr.open("post","back/schKeyword.jsp",true);
+		xhr.setRequestHeader("Content-Type",
+				"application/x-www-form-urlencoded; charset=euc-kr;")
+		xhr.send("keyword="+keyword);
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				var searchList= document.querySelector("#searchList");
+				searchList.innerHTML = xhr.responseText;
 			}
 		}
 	}
@@ -115,51 +133,9 @@ input[type=checkbox]:checked+label {
 <body>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar-->
-<!-- 	<form method="post"> -->
+ 	<form method="post">
 		<div class="border-end bg-white" id="sidebar-wrapper">
-			<div class="container-fluid">
-				<button type="button" style="background-color: #F15F5F"
-					class="easySchBtn" data-bs-toggle="modal" data-bs-target="#myModal">간편검색</button>
-			</div>
-			<div class="modal" id="myModal">
-				<div class="modal-dialog">
-					<div class="modal-content">
-						<!-- Modal Header -->
-						<div class="modal-header">
-							<h4 class="modal-title">차량 간편 검색</h4>
-							<button type="button" class="btn-close" data-bs-dismiss="modal"></button>
-						</div>
-						<!-- Modal body -->
-						<div class="modal-body">
-							<button onclick="pay_Car2()"
-								class="list-group-item list-group-item-action list-group-item-light p-3">가격</button>
-							<div style="display: none;" class="list-group list-group-flush"
-								id="pay_Car2">
-								<%
-								for (int i = 100; i <= 900; i += 100) {
-								%>
-								<input type="radio" name="pay" id="<%=i%>백2" value="<%=i%>" /><label
-									for="<%=i%>백2"><%=i / 100%>백</label>
-								<%
-								}
-								for (int i = 1000; i <= 9000; i += 1000) {
-								%>
-								<input type="radio" name="pay" id="<%=i%>천2" value="<%=i%>" /><label
-									for="<%=i%>천2"><%=i / 1000%>천</label>
-								<%
-								}
-								%>
-							</div>
-						</div>
-						<!-- Modal footer -->
-						<div class="modal-footer">
-							<button type="button" class="btn btn-danger"
-								data-bs-dismiss="modal">확인</button>
-						</div>
-					</div>
-				</div>
-			</div>
-			<button onclick="company_Car()"
+			<button type="button" onclick="company_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">제조사</button>
 			<div style="display: none;" class="list-group list-group-flush"
 				id="company_Car">
@@ -169,12 +145,12 @@ input[type=checkbox]:checked+label {
 				for (Car_Res_Info cri : infolist) {
 					if (cri.getLevel() == 1) {
 				%>
-				<input type="checkbox" name="company" id="<%=cri.getName()%>"
-					value="<%=cri.getCri_no()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
+				<input type="checkbox" name="manu" id="<%=cri.getName()%>"
+					value="<%=cri.getName()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
 				<%}%>
 				<%}%>
 			</div>
-			<button onclick="model_Car()"
+			<button type="button" onclick="model_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">모델명</button>
 			<div style="display: none;" class="list-group list-group-flush"
 				id="model_Car">
@@ -183,11 +159,11 @@ input[type=checkbox]:checked+label {
 					if (cri.getLevel() == 2) {
 				%>
 				<input type="checkbox" name="model" id="<%=cri.getName()%>"
-					value="<%=cri.getCri_no()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
+					value="<%=cri.getName()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
 				<%}%>
 				<%}%>
 			</div>
-			<button onclick="year_Car()"
+			<button type="button" onclick="year_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">연식</button>
 			<div style="display: none;" class="list-group list-group-flush"
 				id="year_Car">
@@ -205,7 +181,7 @@ input[type=checkbox]:checked+label {
 					<%}%>
 				</select>
 			</div>
-			<button onclick="diriving_Car()"
+			<button type="button" onclick="diriving_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">주행거리</button>
 			<div style="display: none;" class="list-group list-group-flush"
 				id="diriving_Car">
@@ -213,31 +189,31 @@ input[type=checkbox]:checked+label {
 					<%
 					for (int i = 10000; i <= 100000; i += 10000) {
 					%>
-					<option id="<%=i%>" value="<%=i%>"><%=i%>km
+					<option name="dist" id="dist" value="<%=i%>"><%=i%>km
 					</option>
 					<%}%>
 				</select>
 			</div>
-			<button onclick="pay_Car()"
+			<button type="button" onclick="pay_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">가격</button>
 			<div style="display: none;" class="list-group list-group-flush"
 								id="pay_Car">
 								<%
 								for (int i = 100; i <= 900; i += 100) {
 								%>
-								<input type="radio" name="pay" id="<%=i%>백2" value="<%=i%>" /><label
-									for="<%=i%>백2"><%=i / 100%>백</label>
+								<input type="radio" name="price" id="<%=i%>" value="<%=i%>" /><label
+									for="<%=i%>"><%=i / 100%>백</label>
 								<%
 								}
 								for (int i = 1000; i <= 9000; i += 1000) {
 								%>
-								<input type="radio" name="pay" id="<%=i%>천2" value="<%=i%>" /><label
-									for="<%=i%>천2"><%=i / 1000%>천</label>
+								<input type="radio" name="price" id="<%=i%>" value="<%=i%>" /><label
+									for="<%=i%>"><%=i / 1000%>천</label>
 								<%
 								}
 								%>
 							</div>
-			<button onclick="option_Car()"
+			<button type="button" onclick="option_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">옵션</button>
 			<div style="display: none;" class="list-group list-group-flush"
 				id="option_Car">
@@ -250,7 +226,7 @@ input[type=checkbox]:checked+label {
 					<label for="<%=co.getOpName()%>"><%=co.getOpName()%></label>
 				<%}%>
 			</div>
-			<button onclick="fuel_Car()"
+			<button type="button" onclick="fuel_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">연료</button>
 			<div style="display: none;" class="list-group list-group-flush"
 				id="fuel_Car">
@@ -259,35 +235,34 @@ input[type=checkbox]:checked+label {
 					if (cri.getLevel() == 3) {
 				%>
 				<input type="checkbox" name="volume" id="<%=cri.getName()%>"
-					value="<%=cri.getCri_no()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
+					value="<%=cri.getName()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
 				<%}%>
 				<%}%>
 			</div>
-			<button onclick="crush_Car()"
+			<button type="button" onclick="crush_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">사고유무</button>
 			<div style="display: none;" class="list-group list-group-flush"
 				id="crush_Car">
-				<input type="checkbox" name="acc" id="모두포함" value="모두포함" /><label
-					for="모두포함">모두포함</label> <input type="checkbox" name="acc"
-					id="무사고" value="무사고" /><label for="무사고">무사고</label> <input
-					type="checkbox" name="acc" id="단순수리" value="단순수리" /><label
-					for="단순수리">단순수리</label> <input type="checkbox" name="acc" id="사고"
-					value="사고" /><label for="사고">사고</label>
+				<input type="radio" name="acc" id="모두포함" value="" /><label
+					for="모두포함">모두포함</label> <input type="radio" name="acc"
+					id="무사고" value="0" /><label for="무사고">무사고</label>
+					<input type="radio" name="acc" id="사고"
+					value="1" /><label for="사고">사고</label>
 			</div>
 		<div class="container-fluid">
 			<button type="button" onclick="schCar()" style="background-color: #F15F5F" class="easySchBtn">검색</button>
 		</div>
 		</div>
-<!-- 	</form> -->
+ 	</form>
 		<!-- Page content wrapper-->
 		<div id="page-content-wrapper">
 			<!-- Top navigation-->
 			<nav
 				class="navbar navbar-expand-lg navbar-light bg-light border-bottom">
 				<div class="container-fluid">
-					<form class="searchForm">
-						<input type="text" class="searchBox" placeholder="원하는 차량을 검색하세요." />
-						<input type="button" class="searchBtn" value="검색" />
+					<form class="searchForm" method="post">
+						<input type="text" id="keyword" name="keyword" class="searchBox" placeholder="원하는 차량을 검색하세요." />
+						<input type="button" onclick="schKeyword()" class="searchBtn" value="검색" />
 					</form>
 				</div>
 			</nav>
@@ -296,7 +271,7 @@ input[type=checkbox]:checked+label {
 				<!-- Section-->
 				<section class="py-5">
 					<div class="container px-4 px-lg-5 mt-5">
-						<div
+						<div id="searchList"
 							class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 							<%
 							List<OkayCar_Res> clist = dao.getCarList();

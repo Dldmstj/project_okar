@@ -74,4 +74,11 @@ for (OkayCar_Res ok : dao.searchCar(sch)) {
 		</div>
 	</div>
 </div>
+<%
+	if(ok.getCar_num() == null){
+		%>
+		<h2 style="text-align:center;">검색결과가 없습니다.</h2>
+		<%
+	}
+%>
 <%}%>

@@ -22,6 +22,17 @@
 	rel="stylesheet" />
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../resources/static/css/styles.css" rel="stylesheet" />
+<style type="text/css">
+	#monthlyCost{
+		width: 100%;
+		text-align: center;
+		border: 1px solid #b70f28;
+		border-radius: 0.8rem;
+		padding: 10px;
+		margin-top: 30px;
+	}
+	
+</style>
 </head>
 <%
 DecimalFormat decFormat = new DecimalFormat("###,###"); // 쉼표 찍는 내장 객체
@@ -36,10 +47,11 @@ int carCost = ok.getPrice() * 10000;
 // 차량 선수금
 int advance = (int) (carCost * 0.3);
 
+// 취득세(차량금액*0.07)
+int tax = (int)(carCost * 0.07);
+
 // 이전등록비
-// 취득세(차량금액*0.07) + 공채매입비 + 인지대(3000원) + 증지대(1000원)
-// 대략적으로 취득세 + 인지대 + 증지대 정도 계산하는 메서드
-int transfer = 0;
+int transfer = tax + 3000 + 1000;
 int tot_cost = carCost + transfer + ok.manage_cost + ok.agency_fee; // 지불할 총 금액 (차량가격 + 관리비 + 수수료 + 이전등록비)
 %>
 <body>
@@ -64,7 +76,7 @@ int tot_cost = carCost + transfer + ok.manage_cost + ok.agency_fee; // 지불할
 		<div class="container px-4 px-lg-5 my-5">
 			<div class="row gx-4 gx-lg-5 align-items-center">
 				<div class="col-md-6">
-					<h1 class="display-5 fw-bolder"><%=(int) (ok.getPrice())%>만원
+					<h1 class="display-5 fw-bolder"><%=decFormat.format(ok.getPrice())%>만원
 					</h1>
 					<ul class="carOptionLists">
 						<li class="fs-5 mb-5"><span>13년 7월식(14년형)</span></li>
@@ -81,23 +93,23 @@ int tot_cost = carCost + transfer + ok.manage_cost + ok.agency_fee; // 지불할
 						value="<%=advance / 10000%>" />만원
 					<p class="lead">할부기간</p>
 					<div class="monthlyRadio">
-						<input type="radio" name="radioBtn" id="12개월" value="12" /><label
-							for="12개월" class="radio-inner" onclick="monthly()">12개월</label> <input type="radio"
-							name="radioBtn" id="24개월" value="24" /><label for="24개월"
-							class="radio-inner">24개월</label> <input type="radio"
-							name="radioBtn" id="36개월" value="36" /><label for="36개월"
-							class="radio-inner">36개월</label> <input type="radio"
-							name="radioBtn" id="48개월" value="48" /><label for="48개월"
-							class="radio-inner">48개월</label> <input type="radio"
-							name="radioBtn" id="60개월" value="60" /><label for="60개월"
-							class="radio-inner">60개월</label> <input type="radio"
-							name="radioBtn" id="72개월" value="72" /><label for="72개월"
-							class="radio-inner">72개월</label>
-					</div>
-					<div>
-						<h2 id="monthlyCost"></h2>
+						<input type="radio" name="radioBtn" id="12개월" value="12" checked/>
+						<label for="12개월" class="radio-inner" onclick="monthly({val:12})">12개월</label>
+						<input type="radio" name="radioBtn" id="24개월" value="24" />
+						<label for="24개월" class="radio-inner" onclick="monthly({val:24})">24개월</label>
+						<input type="radio" name="radioBtn" id="36개월" value="36" />
+						<label for="36개월" class="radio-inner" onclick="monthly({val:36})">36개월</label>
+						<input type="radio" name="radioBtn" id="48개월" value="48" />
+						<label for="48개월" class="radio-inner" onclick="monthly({val:48})">48개월</label>
+						<input type="radio" name="radioBtn" id="60개월" value="60" />
+						<label for="60개월" class="radio-inner" onclick="monthly({val:60})">60개월</label>
+						<input type="radio" name="radioBtn" id="72개월" value="72" />
+						<label for="72개월" class="radio-inner" onclick="monthly({val:72})">72개월</label>
 					</div>
 					<%-- 월 할부금 출력될 공간 --%>
+					<div>
+						<h2 id="monthlyCost">월 541666원</h2>
+					</div>
 				</div>
 				<div class="col-md-6" id="tot-price">
 					<h1 class="display-5 fw-bolder" style="font-size: 30pt;"><%=ok.getManufactor()%>
@@ -108,7 +120,7 @@ int tot_cost = carCost + transfer + ok.manage_cost + ok.agency_fee; // 지불할
 					<div class="el-collapse-item__content">
 						<ul class="costDetailLists">
 							<li class="tot-li"><span>차량가</span><span><%=decFormat.format(carCost)%>원</span></li>
-							<li class="tot-li"><span>이전등록비</span><span><%=transfer%>원</span></li>
+							<li class="tot-li"><span>이전등록비</span><span><%=decFormat.format(transfer)%>원</span></li>
 							<li class="tot-li"><span>관리비용</span><span><%=decFormat.format(ok.manage_cost)%>원</span></li>
 							<li class="tot-li"><span>등록신청대행수수료</span><span><%=decFormat.format(ok.agency_fee)%>원</span></li>
 							<li class="tot-li"><span>배송비</span><span>배송 지역에 따라

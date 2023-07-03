@@ -11,10 +11,14 @@ if(keyword==null){
 	keyword="";
 }
 
-System.out.println(keyword);
-
 DAO dao = new DAO();
 List<OkayCar_Res> clist = dao.searchKeyword(keyword);
+	System.out.println(clist.size());
+%>
+<div style="width:100%; text-align: center;">
+	<h2 style="display:block;">'<%=keyword %>'의 검색결과</h2><br>
+</div>
+<%
 for (OkayCar_Res ok : clist) {
 	System.out.println(ok.getCar_num());
 %>

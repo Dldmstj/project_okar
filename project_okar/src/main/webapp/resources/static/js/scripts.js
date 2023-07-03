@@ -8,16 +8,14 @@
 
 // 세금 및 부대비용(이전등록비 + 관리비 + 대행수수료)
 
-// 할부 function
-// (차량예상가격 - 선수금)에 개월 수 n빵 + 금리7%
-function monthly(){
+function monthly(m){
 	var carPrice = document.querySelector("#carCost").value;
-	var month = document.querySelector("[name=radioBtn]").value;
+	var month = m.val;
 	var monthCost = carPrice/month;
 	
 	console.log(carPrice);
 	console.log(month);
 	console.log(monthCost);
 	var monthlyCost = document.querySelector("#monthlyCost");
-	monthlyCost.innerText = parseInt(monthCost)+"원";
+	monthlyCost.innerText = "월 "+parseInt(monthCost)+"원";
 }

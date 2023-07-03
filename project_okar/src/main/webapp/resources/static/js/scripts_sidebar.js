@@ -95,14 +95,6 @@ function crush_Car(){
         click.style.display = "none";
     }
 }
-function selltype(){
-    let click = document.getElementById("selltype");
-    if(click.style.display === "none"){
-        click.style.display = "block";
-    }else{
-        click.style.display = "none";
-    }
-}
 
 window.addEventListener('DOMContentLoaded', event => {
 
@@ -121,3 +113,5 @@ window.addEventListener('DOMContentLoaded', event => {
     }
 
 });
+
+

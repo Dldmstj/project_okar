@@ -49,3 +49,45 @@ INSERT INTO OKAY_CAR_REGISTER VALUES
 (?,?,?,?,?,?,?,SYSDATE,'N')
  */
 
+/*
+	private String manufactor;	// 제조사
+	private String model;	// 모델명
+	private String volume;	// 배기량
+	private int price;	// 가격
+	private int accident_cnt;	// 사고횟수
+	private int drive_dist;	// 주행거리
+	private Date regist_time;	// 차량등록일자
+	private String sell_or_not;	// 판매여부
+ */
+SELECT * FROM OKAY_CAR_REGISTER;
+
+SELECT *
+FROM OKAY_CAR_REGISTER
+WHERE MANUFACTOR LIKE '%%'
+AND MODEL LIKE '%%'
+AND VOLUME LIKE '%%'
+AND PRICE > 1000
+AND ACCIDENT_CNT > 0
+AND DRIVE_DIST > 10000;
+
+SELECT *
+FROM OKAY_CAR_REGISTER
+WHERE MANUFACTOR IN ('','기아')
+AND MODEL IN ('K5','K8')
+AND VOLUME IN ('2.0 가솔린');
+
+AND PRICE > 1000
+AND ACCIDENT_CNT > 0
+AND DRIVE_DIST > 10000;
+
+/*
+SELECT *
+FROM OKAY_CAR_REGISTER
+WHERE MANUFACTOR LIKE '%%'
+AND MODEL LIKE '%%'
+AND VOLUME LIKE '%%'
+AND PRICE > 1000
+AND ACCIDENT_CNT > 0
+AND DRIVE_DIST > 10000;
+*/
+

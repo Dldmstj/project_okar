@@ -24,6 +24,7 @@
 <!-- Core theme CSS (includes Bootstrap)-->
 <link href="../resources/static/css/styles.css" rel="stylesheet" />
 <link href="../resources/static/css/styles_sidebar.css" rel="stylesheet" />
+
 <style type="text/css">
 input[type=checkbox] {
 	position: relative;
@@ -57,11 +58,51 @@ input[type=checkbox]:checked+label {
 }
 </style>
 </head>
+<script type="text/javascript">
+
+	function schCar(){
+		var coms = document.getElementsByName("company");
+		var comArr = [];
+ 		for(var i=0; i<coms.length; i++){
+ 			if(coms[i].checked){
+ 				comArr.push(coms[i].value);
+ 			}
+ 		}
+		var models = document.getElementsByName("model");
+		var modArr = [];
+ 		for(var i=0; i<models.length; i++){
+ 			if(models[i].checked){
+ 				modArr.push(models[i].value);
+ 			}
+ 		}
+		var vols = document.getElementsByName("volume");
+		var volArr = [];
+ 		for(var i=0; i<vols.length; i++){
+ 			if(vols[i].checked){
+ 				volArr.push(vols[i].value);
+ 			}
+ 		}
+ 		var price = document.getElementById("price");
+ 		var acc = document.getElementById("acc");
+ 		var dist = document.getElementById("dist");
+		var xhr = new XMLHttpRequest()
+		var page ="?company="+comArr+"&model="+modArr+"&volume="+volArr+"&price="+price+"&acc="+acc+"&dist="+dist;
+		console.log(page);
+		xhr.open("post","back/search.jsp",true)
+		xhr.setRequestHeader("Content-Type",
+				"application/x-www-form-urlencoded")
+		xhr.send(page);
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				
+			}
+		}
+	}
+
+</script>
 <body>
 	<iframe src="header.jsp"
 		style="width: 100%; height: 100%; overflow: hidden;" scrolling="no"></iframe>
-	<!-- Navigation-->
-
 	<!-- Header-->
 	<header style="background-color: #F15F5F" class="py-5">
 		<div class="container px-4 px-lg-5 my-5"
@@ -71,10 +112,10 @@ input[type=checkbox]:checked+label {
 			</div>
 		</div>
 	</header>
-	<%-- checkbox jsp로 출력할 방법 찾아보기 .. --%>
 <body>
 	<div class="d-flex" id="wrapper">
 		<!-- Sidebar-->
+<!-- 	<form method="post"> -->
 		<div class="border-end bg-white" id="sidebar-wrapper">
 			<div class="container-fluid">
 				<button type="button" style="background-color: #F15F5F"
@@ -90,28 +131,6 @@ input[type=checkbox]:checked+label {
 						</div>
 						<!-- Modal body -->
 						<div class="modal-body">
-							<button onclick="kind_Car2()"
-								class="list-group-item list-group-item-action list-group-item-light p-3">차종</button>
-							<div style="display: none;" class="list-group list-group-flush"
-								id="kind_Car2">
-								<input type="checkbox" name="kind" id="경차2" value="경차" /><label
-									for="경차2">경차</label> <input type="checkbox" name="kind"
-									id="소형차2" value="소형차" /><label for="소형차2">소형차</label> <input
-									type="checkbox" name="kind" id="준중형차2" value="소형차" /><label
-									for="준중형차2">준중형차</label> <input type="checkbox" name="kind"
-									id="대형차2" value="대형차" /><label for="대형차2">대형차</label> <input
-									type="checkbox" name="kind" id="스포츠카2" value="스포츠카" /><label
-									for="스포츠카2">스포츠카</label> <input type="checkbox" name="kind"
-									id="SUV2" value="SUV" /><label for="SUV2">SUV</label> <input
-									type="checkbox" name="kind" id="RV2" value="RV" /><label
-									for="RV2">RV</label> <input type="checkbox" name="kind"
-									id="경승합차2" value="경승합차" /><label for="경승합차2">경승합차</label> <input
-									type="checkbox" name="kind" id="승합차2" value="승합차" /><label
-									for="승합차2">승합차</label> <input type="checkbox" name="kind"
-									id="화물차2" value="화물차" /><label for="화물차2">화물차</label> <input
-									type="checkbox" name="kind" id="버스2" value="버스" /><label
-									for="버스2">버스</label>
-							</div>
 							<button onclick="pay_Car2()"
 								class="list-group-item list-group-item-action list-group-item-light p-3">가격</button>
 							<div style="display: none;" class="list-group list-group-flush"
@@ -119,13 +138,13 @@ input[type=checkbox]:checked+label {
 								<%
 								for (int i = 100; i <= 900; i += 100) {
 								%>
-								<input type="checkbox" name="pay" id="<%=i%>백2" value="<%=i%>" /><label
+								<input type="radio" name="pay" id="<%=i%>백2" value="<%=i%>" /><label
 									for="<%=i%>백2"><%=i / 100%>백</label>
 								<%
 								}
 								for (int i = 1000; i <= 9000; i += 1000) {
 								%>
-								<input type="checkbox" name="pay" id="<%=i%>천2" value="<%=i%>" /><label
+								<input type="radio" name="pay" id="<%=i%>천2" value="<%=i%>" /><label
 									for="<%=i%>천2"><%=i / 1000%>천</label>
 								<%
 								}
@@ -139,26 +158,6 @@ input[type=checkbox]:checked+label {
 						</div>
 					</div>
 				</div>
-			</div>
-			<button onclick="kind_Car()"
-				class="list-group-item list-group-item-action list-group-item-light p-3">차종</button>
-			<div style="display: none;" class="list-group list-group-flush"
-				id="kind_Car">
-				<input type="checkbox" name="kind" id="경차" value="경차" /><label
-					for="경차">경차</label> <input type="checkbox" name="kind" id="소형차"
-					value="소형차" /><label for="소형차">소형차</label> <input type="checkbox"
-					name="kind" id="준중형차" value="소형차" /><label for="준중형차">준중형차</label>
-				<input type="checkbox" name="kind" id="대형차" value="대형차" /><label
-					for="대형차">대형차</label> <input type="checkbox" name="kind" id="스포츠카"
-					value="스포츠카" /><label for="스포츠카">스포츠카</label> <input
-					type="checkbox" name="kind" id="SUV" value="SUV" /><label
-					for="SUV">SUV</label> <input type="checkbox" name="kind" id="RV"
-					value="RV" /><label for="RV">RV</label> <input type="checkbox"
-					name="kind" id="경승합차" value="경승합차" /><label for="경승합차">경승합차</label>
-				<input type="checkbox" name="kind" id="승합차" value="승합차" /><label
-					for="승합차">승합차</label> <input type="checkbox" name="kind" id="화물차"
-					value="화물차" /><label for="화물차">화물차</label> <input type="checkbox"
-					name="kind" id="버스" value="버스" /><label for="버스">버스</label>
 			</div>
 			<button onclick="company_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">제조사</button>
@@ -183,7 +182,7 @@ input[type=checkbox]:checked+label {
 				for (Car_Res_Info cri : infolist) {
 					if (cri.getLevel() == 2) {
 				%>
-				<input type="checkbox" name="company" id="<%=cri.getName()%>"
+				<input type="checkbox" name="model" id="<%=cri.getName()%>"
 					value="<%=cri.getCri_no()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
 				<%}%>
 				<%}%>
@@ -210,14 +209,7 @@ input[type=checkbox]:checked+label {
 				class="list-group-item list-group-item-action list-group-item-light p-3">주행거리</button>
 			<div style="display: none;" class="list-group list-group-flush"
 				id="diriving_Car">
-				<select name="driving_min" id="driving_min">
-					<%
-					for (int i = 10000; i <= 100000; i += 10000) {
-					%>
-					<option id="<%=i%>" value="<%=i%>"><%=i%>km
-					</option>
-					<%}%>
-				</select> <span> ~ </span> <select name="driving_max" id="driving_min">
+				<select name="dist" id="dist">
 					<%
 					for (int i = 10000; i <= 100000; i += 10000) {
 					%>
@@ -229,22 +221,22 @@ input[type=checkbox]:checked+label {
 			<button onclick="pay_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">가격</button>
 			<div style="display: none;" class="list-group list-group-flush"
-				id="pay_Car">
-				<%
-				for (int i = 100; i <= 900; i += 100) {
-				%>
-				<input type="checkbox" name="pay" id="<%=i%>백" value="<%=i%>" /><label
-					for="<%=i%>백"><%=i / 100%>백</label>
-				<%
-				}
-				for (int i = 1000; i <= 9000; i += 1000) {
-				%>
-				<input type="checkbox" name="pay" id="<%=i%>천" value="<%=i%>" /><label
-					for="<%=i%>천"><%=i / 1000%>천</label>
-				<%
-				}
-				%>
-			</div>
+								id="pay_Car">
+								<%
+								for (int i = 100; i <= 900; i += 100) {
+								%>
+								<input type="radio" name="pay" id="<%=i%>백2" value="<%=i%>" /><label
+									for="<%=i%>백2"><%=i / 100%>백</label>
+								<%
+								}
+								for (int i = 1000; i <= 9000; i += 1000) {
+								%>
+								<input type="radio" name="pay" id="<%=i%>천2" value="<%=i%>" /><label
+									for="<%=i%>천2"><%=i / 1000%>천</label>
+								<%
+								}
+								%>
+							</div>
 			<button onclick="option_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">옵션</button>
 			<div style="display: none;" class="list-group list-group-flush"
@@ -253,7 +245,7 @@ input[type=checkbox]:checked+label {
 				List<Car_Option> olist = dao.getOptionInfo();
 				for (Car_Option co : olist) {
 				%>
-				<input type="checkbox" name="company" id="<%=co.getOpName()%>"
+				<input type="checkbox" name="option" id="<%=co.getOpName()%>"
 					value="<%=co.getOpId()%>" />
 					<label for="<%=co.getOpName()%>"><%=co.getOpName()%></label>
 				<%}%>
@@ -266,7 +258,7 @@ input[type=checkbox]:checked+label {
 				for (Car_Res_Info cri : infolist) {
 					if (cri.getLevel() == 3) {
 				%>
-				<input type="checkbox" name="company" id="<%=cri.getName()%>"
+				<input type="checkbox" name="volume" id="<%=cri.getName()%>"
 					value="<%=cri.getCri_no()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
 				<%}%>
 				<%}%>
@@ -275,24 +267,18 @@ input[type=checkbox]:checked+label {
 				class="list-group-item list-group-item-action list-group-item-light p-3">사고유무</button>
 			<div style="display: none;" class="list-group list-group-flush"
 				id="crush_Car">
-				<input type="checkbox" name="crush" id="모두포함" value="모두포함" /><label
-					for="모두포함">모두포함</label> <input type="checkbox" name="crush"
+				<input type="checkbox" name="acc" id="모두포함" value="모두포함" /><label
+					for="모두포함">모두포함</label> <input type="checkbox" name="acc"
 					id="무사고" value="무사고" /><label for="무사고">무사고</label> <input
-					type="checkbox" name="crush" id="단순수리" value="단순수리" /><label
-					for="단순수리">단순수리</label> <input type="checkbox" name="crush" id="사고"
+					type="checkbox" name="acc" id="단순수리" value="단순수리" /><label
+					for="단순수리">단순수리</label> <input type="checkbox" name="acc" id="사고"
 					value="사고" /><label for="사고">사고</label>
 			</div>
-			<button onclick="selltype()"
-				class="list-group-item list-group-item-action list-group-item-light p-3">판매구분</button>
-			<div style="display: none;" class="list-group list-group-flush"
-				id="selltype">
-				<input type="radio" name="selltype" class="selltype" id="전체"
-					value="전체" /><label for="전체">전체</label> <input type="radio"
-					name="selltype" class="selltype" id="일반" value="일반" /><label
-					for="일반">일반</label> <input type="radio" name="selltype"
-					class="selltype" id="리스" value="리스승계" /><label for="리스">리스</label>
-			</div>
+		<div class="container-fluid">
+			<button type="button" onclick="schCar()" style="background-color: #F15F5F" class="easySchBtn">검색</button>
 		</div>
+		</div>
+<!-- 	</form> -->
 		<!-- Page content wrapper-->
 		<div id="page-content-wrapper">
 			<!-- Top navigation-->
@@ -306,7 +292,6 @@ input[type=checkbox]:checked+label {
 				</div>
 			</nav>
 			<!-- Page content-->
-			<!-- jsp / list로 반복문 사용해서 판매중인 차량 노출 -->
 			<div class="container-fluid">
 				<!-- Section-->
 				<section class="py-5">

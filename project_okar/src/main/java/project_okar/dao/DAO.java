@@ -2,6 +2,7 @@ package project_okar.dao;
 
 import java.sql.*;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import project_okar.vo.Car_Option;
@@ -136,6 +137,104 @@ public class DAO {
 				olist.add(new Car_Option(
 						rs.getString("OPID"),
 						rs.getString("OPNAME")
+						));
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		}catch(SQLException e) {
+			System.out.println("DB에러: " + e.getMessage());
+		}catch(Exception e) {
+			System.out.println("기타예외: " + e.getMessage());
+		}finally {
+			DB.close(rs, pstmt, conn);
+		}
+		return olist;
+	}
+	
+//	public String getManuList(String manu) {
+//		String manuArr[] = manu.split(",");
+//		for(int i=0; i<=manuArr.length; i++) {
+//			
+//		}
+//		return manuArr;
+//	}
+	
+	// 검색 필터별 차량 검색
+	public List<OkayCar_Res> searchCar(String manu, String model, String vol, int price, int acc, int dist){
+		List<OkayCar_Res> olist = new ArrayList<>();
+		String sql = "SELECT *\r\n"
+				+ "FROM OKAY_CAR_REGISTER\r\n"
+				+ "WHERE MANUFACTOR IN ?\r\n"
+				+ "AND MODEL IN ?\r\n"
+				+ "AND VOLUME IN ?"
+				+ "AND PRICE > ?\r\n"
+				+ "AND ACCIDENT_CNT > ?\r\n"
+				+ "AND DRIVE_DIST > ?";
+		try {
+			conn = DB.conn();
+			pstmt = conn.prepareStatement(sql); 
+	        pstmt.setString(1, "(" + manu + ")");
+	        pstmt.setString(2, "(" + model + ")");
+	        pstmt.setString(3, "(" + vol + ")");
+	        pstmt.setInt(4, price);
+	        pstmt.setInt(5, acc);
+	        pstmt.setInt(6, dist);
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				olist.add(new OkayCar_Res(
+						rs.getString("manufactor"),
+						rs.getString("model"),
+						rs.getString("volume"),
+						rs.getInt("price"),
+						rs.getInt("accident_cnt"),
+						rs.getInt("drive_dist"),
+						rs.getDate("regist_time"),
+						rs.getString("sell_or_not")
+						));
+			}
+			rs.close();
+			pstmt.close();
+			conn.close();
+			
+		}catch(SQLException e) {
+			System.out.println("DB에러: " + e.getMessage());
+		}catch(Exception e) {
+			System.out.println("기타예외: " + e.getMessage());
+		}finally {
+			DB.close(rs, pstmt, conn);
+		}
+		return olist;
+	}
+	
+	// 키워드로 차량 검색
+	public List<OkayCar_Res> searchKeyword(String sch){
+		List<OkayCar_Res> olist = new ArrayList<>();
+		String sql = "SELECT *\r\n"
+				+ "FROM OKAY_CAR_REGISTER\r\n"
+				+ "WHERE MANUFACTOR LIKE ?\r\n"
+				+ "AND MODEL LIKE ?\r\n"
+				+ "AND VOLUME LIKE ?\r\n";
+		try {
+			conn = DB.conn();
+			pstmt = conn.prepareStatement(sql); 
+	        pstmt.setString(1, "%" + sch + "%");
+	        pstmt.setString(2, "%" + sch + "%");
+	        pstmt.setString(3, "%" + sch + "%");
+			pstmt = conn.prepareStatement(sql);
+			rs = pstmt.executeQuery();
+			while(rs.next()) {
+				olist.add(new OkayCar_Res(
+						rs.getString("manufactor"),
+						rs.getString("model"),
+						rs.getString("volume"),
+						rs.getInt("price"),
+						rs.getInt("accident_cnt"),
+						rs.getInt("drive_dist"),
+						rs.getDate("regist_time"),
+						rs.getString("sell_or_not")
 						));
 			}
 			rs.close();

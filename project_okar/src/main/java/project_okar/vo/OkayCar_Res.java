@@ -35,6 +35,22 @@ public class OkayCar_Res {
 	// 생성자 선언
 	public OkayCar_Res() {}
 	
+	
+	
+	public OkayCar_Res(String manufactor, String model, String volume, int price, int accident_cnt, int drive_dist,
+			Date regist_time, String sell_or_not) {
+		this.manufactor = manufactor;
+		this.model = model;
+		this.volume = volume;
+		this.price = price;
+		this.accident_cnt = accident_cnt;
+		this.drive_dist = drive_dist;
+		this.regist_time = regist_time;
+		this.sell_or_not = sell_or_not;
+	}
+
+
+
 	public OkayCar_Res(String car_num, String manufactor, String model, String volume, int price, int accident_cnt,
 			int drive_dist, Date regist_time, String sell_or_not, String img_src) {
 		this.car_num = car_num;

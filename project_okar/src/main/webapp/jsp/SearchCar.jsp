@@ -86,7 +86,6 @@ input[type=checkbox]:checked+label {
  		var acc = document.getElementById("acc");
  		var dist = document.getElementById("dist").value;
 		var xhr = new XMLHttpRequest();
-		var page ="manu="+comArr+"&model="+modArr+"&volume="+volArr+"&price="+price+"&acc="+acc+"&dist="+dist;
 		console.log("manu="+comArr+"&model="+modArr+"&volume="+volArr+"&price="+price+"&acc="+acc+"&dist="+dist);
 		xhr.open("post","back/search.jsp",true);
 		xhr.setRequestHeader("Content-Type",
@@ -103,7 +102,6 @@ input[type=checkbox]:checked+label {
 	function schKeyword() {
 		var keyword = document.querySelector("#keyword").value;
 		var xhr = new XMLHttpRequest();
-		var page ="keyword="+keyword;
 		console.log("keyword="+keyword);
 		xhr.open("post","back/schKeyword.jsp",true);
 		xhr.setRequestHeader("Content-Type",
@@ -162,24 +160,6 @@ input[type=checkbox]:checked+label {
 					value="<%=cri.getName()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
 				<%}%>
 				<%}%>
-			</div>
-			<button type="button" onclick="year_Car()"
-				class="list-group-item list-group-item-action list-group-item-light p-3">연식</button>
-			<div style="display: none;" class="list-group list-group-flush"
-				id="year_Car">
-				<select name="year_min" id="year_min">
-					<%
-					for (int i = 2000; i <= 2023; i++) {
-					%>
-					<option id="<%=i%>" value="<%=i%>"><%=i%></option>
-					<%}%>
-				</select> <span> ~ </span> <select name="year_max" id="year_max">
-					<%
-					for (int i = 2000; i <= 2023; i++) {
-					%>
-					<option id="<%=i%>" value="<%=i%>"><%=i%></option>
-					<%}%>
-				</select>
 			</div>
 			<button type="button" onclick="diriving_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">주행거리</button>

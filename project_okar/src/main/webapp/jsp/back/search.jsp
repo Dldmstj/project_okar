@@ -7,17 +7,20 @@
     pageEncoding="UTF-8"%>
 <%
 String manu = request.getParameter("manu"); 
-if(manu==null){
-	manu="";
+if(manu==""){
+	manu="SELECT MANUFAFROM OKAY_CAR_REGISTER";
 }
 String model = request.getParameter("model");
-if(model==null){
-	model="";
+if(model==""){
+	model="SELECT MODEL FROM OKAY_CAR_REGISTER";
 }
 String vol = request.getParameter("volume");
-if(vol==null){
-	vol="";
+if(vol==""){
+	vol="SELECT VOLUME FROM OKAY_CAR_REGISTER";
 }
+System.out.println(manu);
+System.out.println(model);
+System.out.println(vol);
 int price = 0;
 int acc = 0;
 int dist = 0;
@@ -34,8 +37,6 @@ if(distS.equals("null")) {
 	dist=0;
 }
 
-System.out.println(manu);
-System.out.println(model);
 
 DAO dao = new DAO();
 Map<String, String> sch = new HashMap<>();

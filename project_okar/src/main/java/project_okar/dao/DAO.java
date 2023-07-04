@@ -165,18 +165,15 @@ public class DAO {
 	
 	// 검색 필터별 차량 검색
 	public List<OkayCar_Res> searchCar(Map<String, String> sch){
-		/*System.out.println(manu);
-		System.out.println(model);
-		System.out.println(vol);*/
 		List<OkayCar_Res> olist = new ArrayList<>();
 		String sql = "SELECT *\r\n"
 				+ "FROM OKAY_CAR_REGISTER ocr, CAR_IMG ci\r\n"
 				+ "WHERE ocr.MANUFACTOR IN (?)\r\n"
 				+ "AND ocr.MODEL IN (?)\r\n"
 				+ "AND ocr.VOLUME IN (?)\r\n"
-				+ "AND ocr.PRICE > ?\r\n"
-				+ "AND ocr.ACCIDENT_CNT > ?\r\n"
-				+ "AND ocr.DRIVE_DIST > ?"
+				+ "AND ocr.PRICE >= ?\r\n"
+				+ "AND ocr.ACCIDENT_CNT >= ?\r\n"
+				+ "AND ocr.DRIVE_DIST >= ?"
 				+ "AND ocr.model = ci.model";
 		try {
 			conn = DB.conn();
@@ -216,6 +213,60 @@ public class DAO {
 		}
 		return olist;
 	}
+	
+//	// 검색 필터별 차량 검색
+//	public List<OkayCar_Res> searchCar(Map<String, String> sch){
+//		/*System.out.println(manu);
+//		System.out.println(model);
+//		System.out.println(vol);*/
+//		List<OkayCar_Res> olist = new ArrayList<>();
+//		String sql = "SELECT *\r\n"
+//				+ "FROM OKAY_CAR_REGISTER ocr, CAR_IMG ci\r\n"
+//				+ "WHERE ocr.MANUFACTOR IN (?)\r\n"
+//				+ "AND ocr.MODEL IN (?)\r\n"
+//				+ "AND ocr.VOLUME IN (?)\r\n"
+//				+ "AND ocr.PRICE > ?\r\n"
+//				+ "AND ocr.ACCIDENT_CNT > ?\r\n"
+//				+ "AND ocr.DRIVE_DIST > ?"
+//				+ "AND ocr.model = ci.model";
+//		try {
+//			conn = DB.conn();
+//			pstmt = conn.prepareStatement(sql); 
+//			pstmt.setString(1, sch.get("manu"));
+//			pstmt.setString(2, sch.get("model"));
+//			pstmt.setString(3, sch.get("volume"));
+//			pstmt.setInt(4, Integer.parseInt(sch.get("price")));
+//			pstmt.setInt(5, Integer.parseInt(sch.get("acc")));
+//			pstmt.setInt(6, Integer.parseInt(sch.get("dist")));
+//			rs = pstmt.executeQuery();
+//			
+//			while(rs.next()) {
+//				olist.add(new OkayCar_Res(
+//						rs.getString("Car_num"),
+//						rs.getString("manufactor"),
+//						rs.getString("model"),
+//						rs.getString("volume"),
+//						rs.getInt("price"),
+//						rs.getInt("accident_cnt"),
+//						rs.getInt("drive_dist"),
+//						rs.getDate("regist_time"),
+//						rs.getString("sell_or_not"),
+//						rs.getString("img_src")
+//						));
+//			}
+//			rs.close();
+//			pstmt.close();
+//			conn.close();
+//			
+//		}catch(SQLException e) {
+//			System.out.println("DB에러: " + e.getMessage());
+//		}catch(Exception e) {
+//			System.out.println("기타예외: " + e.getMessage());
+//		}finally {
+//			DB.close(rs, pstmt, conn);
+//		}
+//		return olist;
+//	}
 	
 //	public List<OkayCar_Res> searchCar(String manu, String model, String vol, int price, int acc, int dist){
 //		System.out.println(manu);

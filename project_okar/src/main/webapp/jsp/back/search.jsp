@@ -8,15 +8,15 @@
 <%
 String manu = request.getParameter("manu"); 
 if(manu==""){
-	manu="SELECT MANUFAFROM OKAY_CAR_REGISTER";
+	manu=null;
 }
 String model = request.getParameter("model");
 if(model==""){
-	model="SELECT MODEL FROM OKAY_CAR_REGISTER";
+	model=null;
 }
 String vol = request.getParameter("volume");
 if(vol==""){
-	vol="SELECT VOLUME FROM OKAY_CAR_REGISTER";
+	vol=null;
 }
 System.out.println(manu);
 System.out.println(model);
@@ -48,6 +48,7 @@ sch.put("acc", acc+"");
 sch.put("dist", dist+"");
 for (OkayCar_Res ok : dao.searchCar(sch)) {
 	System.out.println(ok.getCar_num());
+	if(ok.getSell_or_not().equals("N")) {
 %>
 <div class="col mb-5">
 	<div class="card h-100"
@@ -82,4 +83,5 @@ for (OkayCar_Res ok : dao.searchCar(sch)) {
 		<%
 	}
 %>
-<%}%>
+<%}
+}%>

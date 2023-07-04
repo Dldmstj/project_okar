@@ -21,6 +21,7 @@ List<OkayCar_Res> clist = dao.searchKeyword(keyword);
 <%
 for (OkayCar_Res ok : clist) {
 	System.out.println(ok.getCar_num());
+	if(ok.getSell_or_not().equals("N")) {
 %>
 <div class="col mb-5">
 	<div class="card h-100"
@@ -48,4 +49,5 @@ for (OkayCar_Res ok : clist) {
 		</div>
 	</div>
 </div>
-<%}%>
+<%}
+}%>

@@ -19,12 +19,20 @@ public class DB {
 		System.out.println("연결 성공!");
 		return conn;
 	}
-	
 	public static void close(ResultSet rs, Statement stmt, Connection conn) {
 		if(rs!=null) rs = null;		
 		if(stmt!=null) stmt = null;		
 		if(conn!=null) conn = null;
 	}
+	public static void rollback(Connection con) {
+        if (con != null) {
+            try {
+                con.rollback();
+            } catch (SQLException e) {
+                System.out.println("롤백 예외: " + e.getMessage());
+            }
+        }
+    }
 	public static void main(String[] args) {
 		try {
 			conn();

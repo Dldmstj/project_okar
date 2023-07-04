@@ -155,185 +155,75 @@ public class DAO {
 		return olist;
 	}
 	
-//	public String getManuList(String manu) {
-//		String manuArr[] = manu.split(",");
-//		for(int i=0; i<=manuArr.length; i++) {
-//			
-//		}
-//		return manuArr;
-//	}
-	
 	// 검색 필터별 차량 검색
-	public List<OkayCar_Res> searchCar(Map<String, String> sch){
-		List<OkayCar_Res> olist = new ArrayList<>();
-		String sql = "SELECT *\r\n"
-				+ "FROM OKAY_CAR_REGISTER ocr, CAR_IMG ci\r\n"
-				+ "WHERE ocr.MANUFACTOR IN (?)\r\n"
-				+ "AND ocr.MODEL IN (?)\r\n"
-				+ "AND ocr.VOLUME IN (?)\r\n"
-				+ "AND ocr.PRICE >= ?\r\n"
-				+ "AND ocr.ACCIDENT_CNT >= ?\r\n"
-				+ "AND ocr.DRIVE_DIST >= ?"
-				+ "AND ocr.model = ci.model";
-		try {
-			conn = DB.conn();
-			pstmt = conn.prepareStatement(sql); 
-	        pstmt.setString(1, sch.get("manu"));
-	        pstmt.setString(2, sch.get("model"));
-	        pstmt.setString(3, sch.get("volume"));
-	        pstmt.setInt(4, Integer.parseInt(sch.get("price")));
-	        pstmt.setInt(5, Integer.parseInt(sch.get("acc")));
-	        pstmt.setInt(6, Integer.parseInt(sch.get("dist")));
-			rs = pstmt.executeQuery();
-			
-			while(rs.next()) {
-				olist.add(new OkayCar_Res(
-						rs.getString("Car_num"),
-						rs.getString("manufactor"),
-						rs.getString("model"),
-						rs.getString("volume"),
-						rs.getInt("price"),
-						rs.getInt("accident_cnt"),
-						rs.getInt("drive_dist"),
-						rs.getDate("regist_time"),
-						rs.getString("sell_or_not"),
-						rs.getString("img_src")
-						));
-			}
-			rs.close();
-			pstmt.close();
-			conn.close();
-			
-		}catch(SQLException e) {
-			System.out.println("DB에러: " + e.getMessage());
-		}catch(Exception e) {
-			System.out.println("기타예외: " + e.getMessage());
-		}finally {
-			DB.close(rs, pstmt, conn);
+	public List<OkayCar_Res> searchCar(Map<String, String> sch) {
+		  List<OkayCar_Res> olist = new ArrayList<>();
+		  String sql = "SELECT *\r\n"
+		      + "FROM OKAY_CAR_REGISTER ocr, CAR_IMG ci\r\n"
+		      + "WHERE 1=1";
+		  List<Object> params = new ArrayList<>(); // 동적으로 파라미터 값들을 추가하기 위한 리스트
+
+		  if (sch.get("manu") != null) {
+		    sql += " AND ocr.MANUFACTOR IN (?)";
+		    params.add(sch.get("manu"));
+		  }
+		  if (sch.get("model") != null) {
+		    sql += " AND ocr.MODEL IN (?)";
+		    params.add(sch.get("model"));
+		  }
+		  if (sch.get("volume") != null) {
+		    sql += " AND ocr.VOLUME IN (?)";
+		    params.add(sch.get("volume"));
+		  }
+		  sql += " AND ocr.PRICE >= ?";
+		  params.add(Integer.parseInt(sch.get("price")));
+		  sql += " AND ocr.ACCIDENT_CNT >= ?";
+		  params.add(Integer.parseInt(sch.get("acc")));
+		  sql += " AND ocr.DRIVE_DIST >= ?";
+		  params.add(Integer.parseInt(sch.get("dist")));
+		  sql += " AND ocr.model = ci.model";
+		  try {
+		    conn = DB.conn();
+		    pstmt = conn.prepareStatement(sql);
+		    // 동적으로 생성된 파라미터 값을 설정
+		    for (int i = 0; i < params.size(); i++) {
+		      pstmt.setObject(i + 1, params.get(i));
+		    }
+		    rs = pstmt.executeQuery();
+		    while (rs.next()) {
+		      olist.add(new OkayCar_Res(
+		          rs.getString("Car_num"),
+		          rs.getString("manufactor"),
+		          rs.getString("model"),
+		          rs.getString("volume"),
+		          rs.getInt("price"),
+		          rs.getInt("accident_cnt"),
+		          rs.getInt("drive_dist"),
+		          rs.getDate("regist_time"),
+		          rs.getString("sell_or_not"),
+		          rs.getString("img_src")
+		      ));
+		    }
+		  } catch (SQLException e) {
+		    System.out.println("DB에러: " + e.getMessage());
+		  } catch (Exception e) {
+		    System.out.println("기타예외: " + e.getMessage());
+		  } finally {
+		    DB.close(rs, pstmt, conn);
+		  }
+		  return olist;
 		}
-		return olist;
-	}
-	
-//	// 검색 필터별 차량 검색
-//	public List<OkayCar_Res> searchCar(Map<String, String> sch){
-//		/*System.out.println(manu);
-//		System.out.println(model);
-//		System.out.println(vol);*/
-//		List<OkayCar_Res> olist = new ArrayList<>();
-//		String sql = "SELECT *\r\n"
-//				+ "FROM OKAY_CAR_REGISTER ocr, CAR_IMG ci\r\n"
-//				+ "WHERE ocr.MANUFACTOR IN (?)\r\n"
-//				+ "AND ocr.MODEL IN (?)\r\n"
-//				+ "AND ocr.VOLUME IN (?)\r\n"
-//				+ "AND ocr.PRICE > ?\r\n"
-//				+ "AND ocr.ACCIDENT_CNT > ?\r\n"
-//				+ "AND ocr.DRIVE_DIST > ?"
-//				+ "AND ocr.model = ci.model";
-//		try {
-//			conn = DB.conn();
-//			pstmt = conn.prepareStatement(sql); 
-//			pstmt.setString(1, sch.get("manu"));
-//			pstmt.setString(2, sch.get("model"));
-//			pstmt.setString(3, sch.get("volume"));
-//			pstmt.setInt(4, Integer.parseInt(sch.get("price")));
-//			pstmt.setInt(5, Integer.parseInt(sch.get("acc")));
-//			pstmt.setInt(6, Integer.parseInt(sch.get("dist")));
-//			rs = pstmt.executeQuery();
-//			
-//			while(rs.next()) {
-//				olist.add(new OkayCar_Res(
-//						rs.getString("Car_num"),
-//						rs.getString("manufactor"),
-//						rs.getString("model"),
-//						rs.getString("volume"),
-//						rs.getInt("price"),
-//						rs.getInt("accident_cnt"),
-//						rs.getInt("drive_dist"),
-//						rs.getDate("regist_time"),
-//						rs.getString("sell_or_not"),
-//						rs.getString("img_src")
-//						));
-//			}
-//			rs.close();
-//			pstmt.close();
-//			conn.close();
-//			
-//		}catch(SQLException e) {
-//			System.out.println("DB에러: " + e.getMessage());
-//		}catch(Exception e) {
-//			System.out.println("기타예외: " + e.getMessage());
-//		}finally {
-//			DB.close(rs, pstmt, conn);
-//		}
-//		return olist;
-//	}
-	
-//	public List<OkayCar_Res> searchCar(String manu, String model, String vol, int price, int acc, int dist){
-//		System.out.println(manu);
-//		System.out.println(model);
-//		System.out.println(vol);
-//		List<OkayCar_Res> olist = new ArrayList<>();
-//		String sql = "SELECT *\r\n"
-//				+ "FROM OKAY_CAR_REGISTER\r\n"
-//				+ "WHERE MANUFACTOR IN ?\r\n"
-//				+ "AND MODEL IN ?\r\n"
-//				+ "AND VOLUME IN ?\r\n"
-//				+ "AND PRICE > ?\r\n"
-//				+ "AND ACCIDENT_CNT > ?\r\n"
-//				+ "AND DRIVE_DIST > ?";
-//		try {
-//			conn = DB.conn();
-//			pstmt = conn.prepareStatement(sql); 
-//			pstmt.setString(1, "(" + manu + ")");
-//			pstmt.setString(2, "(" + model + ")");
-//			pstmt.setString(3, "(" + vol + ")");
-//			pstmt.setInt(4, price);
-//			pstmt.setInt(5, acc);
-//			pstmt.setInt(6, dist);
-//			rs = pstmt.executeQuery();
-//			
-//			while(rs.next()) {
-//				olist.add(new OkayCar_Res(
-//						rs.getString("manufactor"),
-//						rs.getString("model"),
-//						rs.getString("volume"),
-//						rs.getInt("price"),
-//						rs.getInt("accident_cnt"),
-//						rs.getInt("drive_dist"),
-//						rs.getDate("regist_time"),
-//						rs.getString("sell_or_not")
-//						));
-//			}
-//			rs.close();
-//			pstmt.close();
-//			conn.close();
-//			
-//		}catch(SQLException e) {
-//			System.out.println("DB에러: " + e.getMessage());
-//		}catch(Exception e) {
-//			System.out.println("기타예외: " + e.getMessage());
-//		}finally {
-//			DB.close(rs, pstmt, conn);
-//		}
-//		return olist;
-//	}
-	
+
 	// 키워드로 차량 검색
 	public List<OkayCar_Res> searchKeyword(String sch){
 		List<OkayCar_Res> olist = new ArrayList<>();
-		String sql = "SELECT * from\r\n"
-				+ "(SELECT * FROM OKAY_CAR_REGISTER\r\n"
-				+ "	WHERE MANUFACTOR LIKE ?\r\n"
-				+ "	OR MODEL LIKE ?\r\n"
-				+ "	OR VOLUME LIKE ?\r\n"
-				+ ") ocr, CAR_IMG ci\r\n"
-				+ "WHERE ocr.model = ci.model";
+		String sql = "SELECT * FROM OKAY_CAR_REGISTER ocr, CAR_IMG ci\r\n"
+				+ "WHERE ocr.MANUFACTOR||ocr.MODEL||ocr.VOLUME LIKE ?\r\n"
+				+ "AND ocr.MODEL = ci.MODEL";
 		try {
 			conn = DB.conn();
 			pstmt = conn.prepareStatement(sql); 
 	        pstmt.setString(1, "%" + sch + "%");
-	        pstmt.setString(2, "%" + sch + "%");
-	        pstmt.setString(3, "%" + sch + "%");
 			rs = pstmt.executeQuery();
 			
 			while(rs.next()) {
@@ -363,6 +253,31 @@ public class DAO {
 		}
 		return olist;
 	}
+	
+	// 판매 여부 업데이트
+	 public int updateSellOrNot(String car_num) {
+	        int isUpdate = 0;
+	        String sql ="UPDATE OKAY_CAR_REGISTER SET SELL_OR_NOT = 'Y' WHERE CAR_NUM = ?";
+	        try {
+	            conn = DB.conn();
+	            conn.setAutoCommit(false);
+	            pstmt = conn.prepareStatement(sql);
+	            pstmt.setString(1, car_num);
+	            isUpdate = pstmt.executeUpdate();
+	            if (isUpdate == 1) {
+	                conn.commit();
+	                System.out.println("수정 성공");
+	            }
+	        } catch (SQLException e) {
+	            System.out.println("DB 오류: " + e.getMessage());
+	            DB.rollback(conn);
+	        } catch (Exception e) {
+	            System.out.println("일반 오류: " + e.getMessage());
+	        } finally {
+	            DB.close(rs, pstmt, conn);
+	        }
+	        return isUpdate;
+	    }
 	
 	
 	public static void main(String[] args) {

@@ -54,6 +54,32 @@ int tax = (int)(carCost * 0.07);
 int transfer = tax + 3000 + 1000;
 int tot_cost = carCost + transfer + ok.manage_cost + ok.agency_fee; // 지불할 총 금액 (차량가격 + 관리비 + 수수료 + 이전등록비)
 %>
+<script type="text/javascript">
+	function sell(){
+		var car_num = "<%=ok.getCar_num()%>";
+		var isBuy = confirm(car_num +" 차량을 구매하시겠습니까?");
+		if(isBuy == true){
+			buy();
+		}
+	}
+	function buy(){
+		var car_num = "<%=ok.getCar_num()%>";
+		var xhr = new XMLHttpRequest();
+		console.log("car_num="+car_num);
+		xhr.open("post","back/buy.jsp",true);
+		xhr.setRequestHeader("Content-Type",
+				"application/x-www-form-urlencoded; charset=euc-kr;")
+		xhr.send("car_num="+car_num);
+		xhr.onreadystatechange=function(){
+			if(xhr.readyState==4&&xhr.status==200){
+				/* var searchList= document.querySelector("#searchList");
+				searchList.innerHTML = xhr.responseText; */
+				alert("구매가 완료되었습니다.");
+				location.href="SearchCar.jsp";		// 메인으로 이동
+			}
+		}
+	}
+</script>
 <body>
 	<iframe src="header.jsp"
 		style="width: 100%; height: 100%; overflow: hidden;" scrolling="no"></iframe>
@@ -129,9 +155,12 @@ int tot_cost = carCost + transfer + ok.manage_cost + ok.agency_fee; // 지불할
 						</ul>
 					</div>
 					<div class="d-flex">
-						<button class="btn btn-outline-dark flex-shrink-0" type="button">
+					<form method="post">
+						<input type="hidden" id="car_num" value="<%=ok.getCar_num() %>"/>
+						<button onclick="sell()" class="btn btn-outline-dark flex-shrink-0" type="button">
 							<i class="bi-cart-fill me-1"></i> 홈서비스 바로구매
 						</button>
+					</form>
 					</div>
 				</div>
 			</div>

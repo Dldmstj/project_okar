@@ -161,6 +161,19 @@ input[type=checkbox]:checked+label {
 				<%}%>
 				<%}%>
 			</div>
+			<button type="button" onclick="fuel_Car()"
+				class="list-group-item list-group-item-action list-group-item-light p-3">연료</button>
+			<div style="display: none;" class="list-group list-group-flush"
+				id="fuel_Car">
+				<%
+				for (Car_Res_Info cri : infolist) {
+					if (cri.getLevel() == 3) {
+				%>
+				<input type="checkbox" name="volume" id="<%=cri.getName()%>"
+					value="<%=cri.getName()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
+				<%}%>
+				<%}%>
+			</div>
 			<button type="button" onclick="diriving_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">주행거리</button>
 			<div style="display: none;" class="list-group list-group-flush"
@@ -206,19 +219,6 @@ input[type=checkbox]:checked+label {
 					<label for="<%=co.getOpName()%>"><%=co.getOpName()%></label>
 				<%}%>
 			</div>
-			<button type="button" onclick="fuel_Car()"
-				class="list-group-item list-group-item-action list-group-item-light p-3">연료</button>
-			<div style="display: none;" class="list-group list-group-flush"
-				id="fuel_Car">
-				<%
-				for (Car_Res_Info cri : infolist) {
-					if (cri.getLevel() == 3) {
-				%>
-				<input type="checkbox" name="volume" id="<%=cri.getName()%>"
-					value="<%=cri.getName()%>" /> <label for="<%=cri.getName()%>"><%=cri.getName()%></label>
-				<%}%>
-				<%}%>
-			</div>
 			<button type="button" onclick="crush_Car()"
 				class="list-group-item list-group-item-action list-group-item-light p-3">사고유무</button>
 			<div style="display: none;" class="list-group list-group-flush"
@@ -256,6 +256,7 @@ input[type=checkbox]:checked+label {
 							<%
 							List<OkayCar_Res> clist = dao.getCarList();
 							for (OkayCar_Res ok : clist) {
+								if(ok.getSell_or_not().equals("N")) {
 							%>
 							<div class="col mb-5">
 								<div class="card h-100"
@@ -283,7 +284,8 @@ input[type=checkbox]:checked+label {
 									</div>
 								</div>
 							</div>
-							<%}%>
+							<%}
+						}%>
 						</div>
 					</div>
 				</section>

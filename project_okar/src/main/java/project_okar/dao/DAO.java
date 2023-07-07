@@ -278,6 +278,33 @@ public class DAO {
 	        }
 	        return isUpdate;
 	    }
+	 
+	 // 판매 정보 테이블에 insert
+	 public int insertSell_info(String car_num, int tot_price, String mem_id) {
+	        int isInsert = 0;
+	        String sql = "INSERT INTO SELL_INFO values(sell_seq.NEXTVAL,?,sysdate,?,?)";
+	        try {
+	            conn = DB.conn();
+	            conn.setAutoCommit(false);
+	            pstmt = conn.prepareStatement(sql);
+	            pstmt.setString(1, car_num);
+	            pstmt.setInt(2, tot_price);
+	            pstmt.setString(3, mem_id);
+	            isInsert = pstmt.executeUpdate();
+	            if (isInsert == 1) {
+	                conn.commit();
+	                System.out.println("등록 성공");
+	            }
+	        } catch (SQLException e) {
+	            System.out.println("DB 오류: " + e.getMessage());
+	            DB.rollback(conn);
+	        } catch (Exception e) {
+	            System.out.println("일반 오류: " + e.getMessage());
+	        } finally {
+	            DB.close(rs, pstmt, conn);
+	        }
+	        return isInsert;
+	    }
 	
 	
 	public static void main(String[] args) {

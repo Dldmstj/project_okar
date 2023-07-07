@@ -64,12 +64,15 @@ int tot_cost = carCost + transfer + ok.manage_cost + ok.agency_fee; // 지불할
 	}
 	function buy(){
 		var car_num = "<%=ok.getCar_num()%>";
+		var tot_price = "<%=tot_cost%>"
+		var mem_id = "member";
 		var xhr = new XMLHttpRequest();
 		console.log("car_num="+car_num);
+		console.log("mem_id="+mem_id);
 		xhr.open("post","back/buy.jsp",true);
 		xhr.setRequestHeader("Content-Type",
 				"application/x-www-form-urlencoded; charset=euc-kr;")
-		xhr.send("car_num="+car_num);
+		xhr.send("car_num="+car_num+"&tot_price="+tot_price+"&mem_id="+mem_id);
 		xhr.onreadystatechange=function(){
 			if(xhr.readyState==4&&xhr.status==200){
 				/* var searchList= document.querySelector("#searchList");

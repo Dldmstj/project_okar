@@ -7,20 +7,16 @@
     pageEncoding="UTF-8"%>
 <%
 String manu = request.getParameter("manu"); 
-if(manu==""){
-	manu=null;
-}
+if(manu==""){manu=null;}
 String model = request.getParameter("model");
-if(model==""){
-	model=null;
-}
+if(model==""){model=null;}
 String vol = request.getParameter("volume");
-if(vol==""){
-	vol=null;
-}
+if(vol==""){vol=null;}
+
 System.out.println(manu);
 System.out.println(model);
 System.out.println(vol);
+
 int price = 0;
 int acc = 0;
 int dist = 0;
